@@ -1,0 +1,160 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>About | Jagsy Joy</title>
+    <meta
+      name="description"
+      content="Learn more about Jagsy Joy, a toddler learning toy brand focused on thoughtful, screen-free play."
+    />
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">About Jagsy Joy</p>
+        <h1>Thoughtful toys for everyday learning moments.</h1>
+        <p>
+          Jagsy Joy creates toddler-friendly learning toys designed to make
+          playtime simple, engaging, and meaningful.
+        </p>
+      </section>
+
+      <section class="section split">
+        <div>
+          <p class="eyebrow">Our Purpose</p>
+          <h2>Learning should feel natural.</h2>
+        </div>
+
+        <div>
+          <p>
+            We believe toddlers learn best through hands-on discovery. Our toys
+            are designed to support fine motor skills, focus, independent play,
+            and everyday confidence through simple, screen-free activities.
+          </p>
+
+          <p>
+            From busy boards to travel-friendly activity toys, Jagsy Joy helps
+            families bring calm, purposeful play into daily routines.
+          </p>
+        </div>
+      </section>
+
+      <section class="values">
+        <article>
+          <h3>Screen-Free Play</h3>
+          <p>Simple activities that help children stay engaged without screens.</p>
+        </article>
+
+        <article>
+          <h3>Everyday Skills</h3>
+          <p>Designed to help toddlers practice real-life movements and tasks.</p>
+        </article>
+
+        <article>
+          <h3>Travel Friendly</h3>
+          <p>Made for quiet play at home, in the car, or while traveling.</p>
+        </article>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  :root {
+    font-family: Inter, system-ui, sans-serif;
+    color: #2f2a24;
+    background: #fffaf3;
+  }
+
+  body {
+    margin: 0;
+    background: #fffaf3;
+  }
+
+  .hero {
+    padding: 90px 8% 70px;
+    max-width: 980px;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 13px;
+    font-weight: 800;
+    color: #c77b4f;
+  }
+
+  h1 {
+    font-size: clamp(44px, 6vw, 82px);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    margin: 12px 0 24px;
+  }
+
+  h2 {
+    font-size: clamp(34px, 4vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin: 0;
+  }
+
+  .hero p,
+  .section p,
+  .values p {
+    color: #6b6258;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .hero p {
+    font-size: 21px;
+    max-width: 720px;
+  }
+
+  .section {
+    padding: 60px 8%;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+  }
+
+  .values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 50px 8% 90px;
+  }
+
+  .values article {
+    background: white;
+    border: 1px solid #eadfce;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 18px 40px rgba(47, 42, 36, 0.08);
+  }
+
+  .values h3 {
+    font-size: 24px;
+    margin: 0 0 10px;
+  }
+
+  @media (max-width: 800px) {
+    .split,
+    .values {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

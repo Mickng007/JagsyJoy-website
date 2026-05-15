@@ -1,0 +1,38 @@
+[
+  {
+    "id": "busy-board-pink",
+    "brand": "Jagsy Joy",
+    "name": "Pink Busy Board",
+    "slug": "pink-busy-board",
+    "category": "Toddler Learning Toys",
+    "shortDescription": "A hands-on busy board designed to help toddlers practice everyday skills through play.",
+    "longDescription": "The Jagsy Joy Pink Busy Board helps toddlers explore buckles, buttons, zippers, laces, and other everyday activities in a playful way. It is designed for quiet play, travel time, and early skill-building at home or on the go.",
+    "benefits": [
+      "Supports fine motor skills",
+      "Encourages independent play",
+      "Travel-friendly for car rides and trips",
+      "Helps toddlers practice everyday tasks"
+    ],
+    "ageRange": "Toddlers",
+    "material": "Soft fabric and activity hardware",
+    "image": "/images/pink-busy-board.jpg"
+  },
+  {
+    "id": "busy-board-blue",
+    "brand": "Jagsy Joy",
+    "name": "Blue Busy Board",
+    "slug": "blue-busy-board",
+    "category": "Toddler Learning Toys",
+    "shortDescription": "A hands-on blue busy board designed to help toddlers practice everyday skills through play.",
+    "longDescription": "The Jagsy Joy Blue Busy Board helps toddlers explore buckles, buttons, zippers, laces, and other everyday activities in a playful way. It is designed for quiet play, travel time, and early skill-building at home or on the go.",
+    "benefits": [
+      "Supports fine motor skills",
+      "Encourages independent play",
+      "Travel-friendly for car rides and trips",
+      "Helps toddlers practice everyday tasks"
+    ],
+    "ageRange": "Toddlers",
+    "material": "Soft fabric and activity hardware",
+    "image": "/images/blue-busy-board.jpg"
+  }
+]

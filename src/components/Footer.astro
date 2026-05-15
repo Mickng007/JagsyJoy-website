@@ -1,0 +1,55 @@
+<footer class="site-footer">
+  <div>
+    <a class="logo" href="/">Jagsy Joy</a>
+    <p>Thoughtful learning toys for curious little hands.</p>
+  </div>
+
+  <div class="footer-links">
+    <a href="/products">Products</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 48px 8%;
+    border-top: 1px solid #eadfce;
+    background: #fffaf3;
+  }
+
+  .logo {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 24px;
+    color: #2f2a24;
+    text-decoration: none;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: #6b6258;
+    margin: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: #5b5147;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media (max-width: 800px) {
+    .site-footer {
+      flex-direction: column;
+    }
+  }
+</style>

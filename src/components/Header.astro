@@ -1,0 +1,63 @@
+---
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+---
+
+<header class="site-header">
+  <a class="logo" href="/">Jagsy Joy</a>
+
+  <nav>
+    {navItems.map((item) => (
+      <a href={item.href}>{item.label}</a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 8%;
+    border-bottom: 1px solid #eadfce;
+    background: #fffaf3;
+  }
+
+  .logo {
+    font-weight: 800;
+    font-size: 24px;
+    color: #2f2a24;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 24px;
+  }
+
+  nav a {
+    color: #5b5147;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  nav a:hover {
+    color: #2f2a24;
+  }
+
+  @media (max-width: 800px) {
+    .site-header {
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    nav {
+      gap: 14px;
+      font-size: 14px;
+    }
+  }
+</style>

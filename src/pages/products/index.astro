@@ -1,0 +1,94 @@
+---
+import products from '../../data/products.json';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProductCard from '../../components/ProductCard.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Products | Jagsy Joy</title>
+    <meta
+      name="description"
+      content="Explore Jagsy Joy toddler learning toys, including busy boards and screen-free learning toys."
+    />
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Our Products</p>
+        <h1>Learning toys made for curious little hands.</h1>
+        <p>
+          Explore screen-free toddler toys designed for early learning, quiet play,
+          travel time, and everyday skill-building.
+        </p>
+      </section>
+
+      <section class="product-grid">
+        {products.map((product) => (
+          <ProductCard product={product} />
+        ))}
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  :root {
+    font-family: Inter, system-ui, sans-serif;
+    color: #2f2a24;
+    background: #fffaf3;
+  }
+
+  body {
+    margin: 0;
+    background: #fffaf3;
+  }
+
+  .hero {
+    padding: 80px 8% 40px;
+    max-width: 900px;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 13px;
+    font-weight: 800;
+    color: #c77b4f;
+  }
+
+  h1 {
+    font-size: clamp(44px, 6vw, 78px);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    margin: 0 0 24px;
+  }
+
+  .hero p {
+    color: #6b6258;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 430px));
+    justify-content: center;
+    gap: 32px;
+    padding: 40px 8% 90px;
+  }
+
+  @media (max-width: 800px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

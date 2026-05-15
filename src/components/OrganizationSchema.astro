@@ -1,0 +1,16 @@
+---
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Jagsy Joy",
+  url: "http://localhost:4321",
+  email: "qenterprises.design@gmail.com",
+  description:
+    "Jagsy Joy creates thoughtful learning toys for toddlers, including busy boards, busy books, and travel-friendly activity toys.",
+};
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(organizationSchema)}
+/>
