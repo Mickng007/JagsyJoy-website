@@ -8,56 +8,118 @@ const navItems = [
 ---
 
 <header class="site-header">
-  <a class="logo" href="/">Jagsy Joy</a>
+  <a class="logo-link" href="/" aria-label="Jagsy Joy homepage">
+    <img class="logo-image" src="/images/jagsy-joy-logo.png" alt="Jagsy Joy" />
+  </a>
 
-  <nav>
+  <nav class="site-nav" aria-label="Main navigation">
     {navItems.map((item) => (
-      <a href={item.href}>{item.label}</a>
+      <a class="nav-link" href={item.href}>{item.label}</a>
     ))}
   </nav>
 </header>
 
 <style>
   .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 28px 8%;
-    border-bottom: 1px solid #eadfce;
-    background: #fffaf3;
+    position: absolute !important;
+    top: 42px !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 100 !important;
+
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 32px !important;
+
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 24px 8% !important;
+
+    background: transparent !important;
+    border: none !important;
   }
 
-  .logo {
-    font-weight: 800;
-    font-size: 24px;
-    color: #2f2a24;
-    text-decoration: none;
+  .logo-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    flex: 0 0 auto !important;
   }
 
-  nav {
-    display: flex;
-    gap: 24px;
+  .logo-image {
+    display: block !important;
+    width: 220px !important;
+    max-width: 220px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 10px 18px rgba(36, 31, 43, 0.2)) !important;
   }
 
-  nav a {
-    color: #5b5147;
-    text-decoration: none;
-    font-weight: 600;
+  .site-nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+
+    background: rgba(255, 255, 255, 0.78) !important;
+    border: 1px solid rgba(255, 255, 255, 0.86) !important;
+    border-radius: 999px !important;
+    padding: 8px !important;
+
+    box-shadow: 0 16px 38px rgba(125, 92, 255, 0.14) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
   }
 
-  nav a:hover {
-    color: #2f2a24;
+  .nav-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    color: #5f526b !important;
+    text-decoration: none !important;
+    font-weight: 900 !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+
+    padding: 11px 17px !important;
+    border-radius: 999px !important;
+
+    transition:
+      color 0.2s ease,
+      background 0.2s ease,
+      transform 0.2s ease !important;
+  }
+
+  .nav-link:hover {
+    color: #241f2b !important;
+    background: linear-gradient(135deg, #ffe1f0, #e6f7ff) !important;
+    transform: translateY(-1px) !important;
   }
 
   @media (max-width: 800px) {
     .site-header {
-      flex-direction: column;
-      gap: 18px;
+      top: 38px !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      padding: 18px 6% !important;
     }
 
-    nav {
-      gap: 14px;
-      font-size: 14px;
+    .logo-image {
+      width: 180px !important;
+      max-width: 180px !important;
+    }
+
+    .site-nav {
+      gap: 4px !important;
+      flex-wrap: wrap !important;
+      border-radius: 24px !important;
+    }
+
+    .nav-link {
+      font-size: 13px !important;
+      padding: 9px 12px !important;
     }
   }
 </style>

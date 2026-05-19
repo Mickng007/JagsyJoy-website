@@ -5,6 +5,7 @@
     "name": "Pink Busy Board",
     "slug": "pink-busy-board",
     "category": "Toddler Learning Toys",
+    "price": "$24.99",
     "shortDescription": "A hands-on busy board designed to help toddlers practice everyday skills through play.",
     "longDescription": "The Jagsy Joy Pink Busy Board helps toddlers explore buckles, buttons, zippers, laces, and other everyday activities in a playful way. It is designed for quiet play, travel time, and early skill-building at home or on the go.",
     "benefits": [
@@ -13,9 +14,24 @@
       "Travel-friendly for car rides and trips",
       "Helps toddlers practice everyday tasks"
     ],
+    "details": [
+      "Designed for hands-on toddler learning",
+      "Helps practice buckles, buttons, zippers, laces, and everyday skills",
+      "Great for quiet play at home, in the car, or while traveling",
+      "Soft, lightweight, and easy for little hands to explore",
+      "Encourages screen-free play and independent discovery"
+    ],
     "ageRange": "Toddlers",
     "material": "Soft fabric and activity hardware",
-    "image": "/images/pink-busy-board.jpg"
+    "image": "/images/pink-busy-board.jpg",
+    "images": [
+      "/images/pink-busy-board.jpg",
+      "/images/pink-busy-board-2.jpg",
+      "/images/pink-busy-board-3.jpg",
+      "/images/pink-busy-board-4.jpg",
+      "/images/pink-busy-board-5.jpg",
+      "/images/pink-busy-board-6.jpg"
+    ]
   },
   {
     "id": "busy-board-blue",
@@ -23,6 +39,7 @@
     "name": "Blue Busy Board",
     "slug": "blue-busy-board",
     "category": "Toddler Learning Toys",
+    "price": "$24.99",
     "shortDescription": "A hands-on blue busy board designed to help toddlers practice everyday skills through play.",
     "longDescription": "The Jagsy Joy Blue Busy Board helps toddlers explore buckles, buttons, zippers, laces, and other everyday activities in a playful way. It is designed for quiet play, travel time, and early skill-building at home or on the go.",
     "benefits": [
@@ -31,8 +48,26 @@
       "Travel-friendly for car rides and trips",
       "Helps toddlers practice everyday tasks"
     ],
+    "details": [
+      "Designed for hands-on toddler learning",
+      "Helps practice buckles, buttons, zippers, laces, and everyday skills",
+      "Great for quiet play at home, in the car, or while traveling",
+      "Soft, lightweight, and easy for little hands to explore",
+      "Encourages screen-free play and independent discovery"
+    ],
     "ageRange": "Toddlers",
     "material": "Soft fabric and activity hardware",
-    "image": "/images/blue-busy-board.jpg"
+    "image": "/images/blue-busy-board.jpg",
+    "images": [
+      "/images/blue-busy-board.jpg",
+      "/images/blue-busy-board-1.jpg",
+      "/images/blue-busy-board-2.jpg",
+      "/images/blue-busy-board-3.jpg",
+      "/images/blue-busy-board-4.jpg",
+      "/images/blue-busy-board-5.jpg",
+      "/images/blue-busy-board-6.jpg",
+      "/images/blue-busy-board-7.jpg",
+      "/images/blue-busy-board-8.jpg"
+    ]
   }
 ]

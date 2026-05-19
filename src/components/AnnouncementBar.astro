@@ -1,0 +1,102 @@
+---
+const messages = [
+  "Free Shipping On Orders Over $50",
+  "Screen-Free Play For Curious Little Hands",
+  "New Busy Board Collection Available Now",
+  "Thoughtful Learning Toys For Toddlers",
+  "Perfect Gifts For Everyday Play"
+];
+---
+
+<div class="announcement-bar" aria-label="Jagsy Joy announcements">
+  <div class="marquee-content" aria-hidden="true">
+    {[...Array(3)].map(() => (
+      <div class="marquee-group">
+        {messages.map((message) => (
+          <span class="message-item">
+            {message}
+            <span class="separator">★</span>
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .announcement-bar {
+    background: #ff50a3;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 200;
+  }
+
+  .marquee-content {
+    display: flex;
+    white-space: nowrap;
+    min-width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee-group {
+    display: flex;
+    align-items: center;
+    min-width: max-content;
+  }
+
+  .message-item {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 0 30px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .separator {
+    color: #ffffff;
+    margin-left: 60px;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .announcement-bar {
+      height: 38px;
+    }
+
+    .message-item {
+      font-size: 10px;
+      padding: 0 20px;
+      letter-spacing: 0.12em;
+    }
+
+    .separator {
+      margin-left: 40px;
+      font-size: 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-content {
+      animation: none;
+      overflow-x: auto;
+    }
+  }
+</style>

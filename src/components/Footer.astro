@@ -1,55 +1,383 @@
 <footer class="site-footer">
-  <div>
-    <a class="logo" href="/">Jagsy Joy</a>
-    <p>Thoughtful learning toys for curious little hands.</p>
+
+  <div class="footer-inner">
+
+    <div class="footer-column brand-column">
+
+      <a href="/" class="footer-logo-link" aria-label="Jagsy Joy homepage">
+
+        <img class="footer-logo" src="/images/jagsy-joy-logo.png" alt="Jagsy Joy" />
+
+      </a>
+
+      <p class="brand-text">
+
+        Thoughtful learning toys for curious little hands. Designed for screen-free
+
+        discovery and everyday play.
+
+      </p>
+
+      <div class="newsletter">
+
+        <h3>Get our newsletter</h3>
+
+        <p>Our emails are mostly brief, often funny, and always worth a read.</p>
+
+        <form class="newsletter-form" action="#" method="post">
+
+          <input type="email" placeholder="E-mail" aria-label="Email address" />
+
+          <button type="submit" aria-label="Submit email">→</button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="footer-column">
+
+      <h3>Customer Service</h3>
+
+      <nav class="footer-links" aria-label="Customer Service">
+
+        <a href="/contact">Contact Us</a>
+
+        <a href="/shipping-policy">Shipping Policy</a>
+
+        <a href="/refund-policy">Refund Policy</a>
+
+        <a href="/faq">F.A.Q.</a>
+
+      </nav>
+
+    </div>
+
+    <div class="footer-column">
+
+      <h3>Explore More</h3>
+
+      <nav class="footer-links" aria-label="Explore More">
+
+        <a href="/">Home</a>
+
+        <a href="/products">Products</a>
+
+        <a href="/about">About Us</a>
+
+        <a href="/contact">Contact</a>
+
+      </nav>
+
+    </div>
+
   </div>
 
-  <div class="footer-links">
-    <a href="/products">Products</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
+  <div class="footer-bottom">
+
+    <p>© 2026, Jagsy Joy - BUSY HANDS, GROWING MINDS</p>
+
   </div>
+
 </footer>
 
 <style>
+
   .site-footer {
-    display: flex;
-    justify-content: space-between;
-    gap: 32px;
-    padding: 48px 8%;
-    border-top: 1px solid #eadfce;
-    background: #fffaf3;
+
+    background: #A81259;
+
+    color: #ffffff;
+
+    padding: 72px 8% 28px;
+
   }
 
-  .logo {
-    display: inline-block;
-    font-weight: 800;
-    font-size: 24px;
-    color: #2f2a24;
+  .footer-inner {
+
+    width: 100%;
+
+    max-width: 1360px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1.5fr) minmax(180px, 0.75fr) minmax(180px, 0.75fr);
+
+    gap: 72px;
+
+    align-items: start;
+
+  }
+
+  .footer-column {
+
+    min-width: 0;
+
+  }
+
+  .footer-logo-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
     text-decoration: none;
-    margin-bottom: 12px;
+
+    margin-bottom: 22px;
+
   }
 
-  p {
-    color: #6b6258;
-    margin: 0;
+  .footer-logo {
+
+    display: block;
+
+    width: 200px;
+
+    max-width: 200px;
+
+    height: auto;
+
+    object-fit: contain;
+
+    filter: none;
+
+  }
+
+  .brand-text {
+
+    max-width: 520px;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    font-size: 16px;
+
+    line-height: 1.65;
+
+    margin: 0 0 30px;
+
+  }
+
+  .footer-column h3 {
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    margin: 0 0 20px;
+
+    font-weight: 900;
+
+  }
+
+  .newsletter p {
+
+    max-width: 520px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 15px;
+
+    line-height: 1.65;
+
+    margin: 0 0 18px;
+
+  }
+
+  .newsletter-form {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.42);
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    overflow: hidden;
+
+  }
+
+  .newsletter-form input {
+
+    flex: 1;
+
+    height: 100%;
+
+    min-width: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    padding: 0 22px;
+
+    font-size: 15px;
+
+  }
+
+  .newsletter-form input::placeholder {
+
+    color: rgba(255, 255, 255, 0.72);
+
+  }
+
+  .newsletter-form button {
+
+    width: 48px;
+
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    margin-right: 5px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #A81259;
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+
+      transform 0.2s ease,
+
+      opacity 0.2s ease;
+
+  }
+
+  .newsletter-form button:hover {
+
+    transform: translateX(2px);
+
+    opacity: 0.92;
+
   }
 
   .footer-links {
+
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+
+    flex-direction: column;
+
+    gap: 14px;
+
   }
 
   .footer-links a {
-    color: #5b5147;
+
+    color: rgba(255, 255, 255, 0.88);
+
     text-decoration: none;
-    font-weight: 600;
+
+    font-size: 15px;
+
+    line-height: 1.4;
+
+    transition:
+
+      color 0.2s ease,
+
+      transform 0.2s ease;
+
   }
 
-  @media (max-width: 800px) {
-    .site-footer {
-      flex-direction: column;
-    }
+  .footer-links a:hover {
+
+    color: #ffffff;
+
+    transform: translateX(3px);
+
   }
+
+  .footer-bottom {
+
+    max-width: 1360px;
+
+    margin: 60px auto 0;
+
+    padding-top: 24px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.32);
+
+    text-align: center;
+
+  }
+
+  .footer-bottom p {
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 14px;
+
+    margin: 0;
+
+  }
+
+  @media (max-width: 900px) {
+
+    .site-footer {
+
+      padding: 58px 6% 26px;
+
+    }
+
+    .footer-inner {
+
+      grid-template-columns: 1fr;
+
+      gap: 42px;
+
+    }
+
+    .footer-logo {
+
+      width: 150px;
+
+      max-width: 150px;
+
+    }
+
+    .newsletter-form {
+
+      max-width: 100%;
+
+    }
+
+    .footer-bottom {
+
+      margin-top: 46px;
+
+    }
+
+  }
+
 </style>
