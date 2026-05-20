@@ -1,43 +1,90 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Jagsy Joy",
+  url: "http://localhost:4321/about",
+  description:
+    "Jagsy Joy creates playful learning toys that support curiosity, fine motor skills, independent play, and screen-free discovery for toddlers.",
+};
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>About | Jagsy Joy</title>
+    <title>About Jagsy Joy | Thoughtful Learning Toys for Toddlers</title>
     <meta
       name="description"
-      content="Learn more about Jagsy Joy, a toddler learning toy brand focused on thoughtful, screen-free play."
+      content="Learn about Jagsy Joy, a playful toddler toy brand creating busy boards and screen-free learning toys for curious little hands."
     />
+    <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
   </head>
 
   <body>
+    <AnnouncementBar />
     <Header />
 
     <main>
-      <section class="hero">
-        <p class="eyebrow">About Jagsy Joy</p>
-        <h1>Thoughtful toys for everyday learning moments.</h1>
-        <p>
-          Jagsy Joy creates toddler-friendly learning toys designed to make
-          playtime simple, engaging, and meaningful.
-        </p>
+      <section class="about-hero">
+        <div class="about-hero-bg"></div>
+        <div class="about-hero-overlay"></div>
+
+        <div class="about-hero-content">
+          <h1>About Jagsy Joy</h1>
+          <p>Thoughtful learning toys for curious little hands.</p>
+        </div>
       </section>
 
-      <section class="section split">
-        <div>
+      <section class="about-content">
+        <div class="breadcrumb">
+          <a href="/">Home</a>
+          <span>›</span>
+          <span>About Jagsy Joy</span>
+        </div>
+
+        <div class="story-heading">
+          <p class="eyebrow">Our Story</p>
+          <h2>About Jagsy Joy</h2>
+        </div>
+
+        <div class="story-copy">
+          <p>
+            At Jagsy Joy, we believe childhood should feel magical, curious, and
+            full of discovery. We create playful learning toys that help spark
+            curiosity, support growing minds, and turn everyday playtime into
+            meaningful moments of development.
+          </p>
+
+          <p>
+            Our flagship product, the Toddler Busy Board, is more than just a toy.
+            It is a hands-on world of wonder designed to help little ones practice
+            fine motor skills, build independence, explore colors and textures, and
+            enjoy screen-free play.
+          </p>
+
+          <p>
+            Every Jagsy Joy toy is made with one simple goal: to make learning feel
+            like play.
+          </p>
+        </div>
+      </section>
+
+      <section class="purpose-section">
+        <div class="purpose-heading">
           <p class="eyebrow">Our Purpose</p>
           <h2>Learning should feel natural.</h2>
         </div>
 
-        <div>
+        <div class="purpose-copy">
           <p>
-            We believe toddlers learn best through hands-on discovery. Our toys
-            are designed to support fine motor skills, focus, independent play,
-            and everyday confidence through simple, screen-free activities.
+            We believe toddlers learn best through hands-on discovery. Our toys are
+            designed to support fine motor skills, focus, independent play, and
+            everyday confidence through simple, screen-free activities.
           </p>
 
           <p>
@@ -47,18 +94,21 @@ import Footer from '../components/Footer.astro';
         </div>
       </section>
 
-      <section class="values">
-        <article>
+      <section class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">✨</div>
           <h3>Screen-Free Play</h3>
           <p>Simple activities that help children stay engaged without screens.</p>
         </article>
 
-        <article>
+        <article class="feature-card">
+          <div class="feature-icon">🙌</div>
           <h3>Everyday Skills</h3>
           <p>Designed to help toddlers practice real-life movements and tasks.</p>
         </article>
 
-        <article>
+        <article class="feature-card">
+          <div class="feature-icon">✈️</div>
           <h3>Travel Friendly</h3>
           <p>Made for quiet play at home, in the car, or while traveling.</p>
         </article>
@@ -71,90 +121,238 @@ import Footer from '../components/Footer.astro';
 
 <style>
   :root {
-    font-family: Inter, system-ui, sans-serif;
-    color: #2f2a24;
-    background: #fffaf3;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    color: #241f2b;
+    background: #fff7f2;
   }
 
   body {
     margin: 0;
-    background: #fffaf3;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(255, 125, 184, 0.12), transparent 30%),
+      radial-gradient(circle at 90% 4%, rgba(69, 199, 244, 0.12), transparent 26%),
+      linear-gradient(180deg, #fff7f2 0%, #fff2f8 52%, #f4fbff 100%);
   }
 
-  .hero {
-    padding: 90px 8% 70px;
-    max-width: 980px;
+  .about-hero {
+    position: relative;
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 130px 8% 80px;
+    box-sizing: border-box;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .about-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/jagsy-joy-hero.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    transform: scale(1.02);
+  }
+
+  .about-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 80, 163, 0.24) 0%,
+        rgba(36, 31, 43, 0.18) 42%,
+        rgba(255, 247, 242, 0.28) 100%
+      ),
+      rgba(0, 0, 0, 0.18);
+    z-index: 1;
+  }
+
+  .about-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 780px;
+    color: white;
+  }
+
+  .about-hero h1 {
+    font-size: clamp(48px, 7vw, 86px);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    margin: 0 0 18px;
+    color: #ffffff;
+    text-shadow:
+      0 3px 0 rgba(255, 80, 163, 0.48),
+      0 18px 34px rgba(0, 0, 0, 0.22);
+  }
+
+  .about-hero p {
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.5;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.94);
+    text-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .about-content {
+    padding: 82px 8% 48px;
+    background: #fffaf5;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: #7a6e83;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .breadcrumb a {
+    color: #ff50a3;
+    text-decoration: none;
+    font-weight: 800;
+  }
+
+  .story-heading {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 30px;
   }
 
   .eyebrow {
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     font-size: 13px;
-    font-weight: 800;
-    color: #c77b4f;
+    font-weight: 900;
+    color: #ff50a3;
+    margin: 0 0 14px;
   }
 
-  h1 {
-    font-size: clamp(44px, 6vw, 82px);
+  .story-heading h2,
+  .purpose-heading h2 {
+    font-size: clamp(38px, 5vw, 68px);
     line-height: 0.95;
-    letter-spacing: -0.05em;
-    margin: 12px 0 24px;
+    letter-spacing: -0.055em;
+    margin: 0;
+    color: #241f2b;
   }
 
-  h2 {
-    font-size: clamp(34px, 4vw, 56px);
-    line-height: 1;
+  .story-copy {
+    max-width: 1040px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .story-copy p {
+    color: #5f526b;
+    font-size: clamp(18px, 1.6vw, 24px);
+    line-height: 1.62;
+    margin: 0 0 24px;
+  }
+
+  .purpose-section {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 72px;
+    align-items: start;
+    padding: 78px 8%;
+    background: #fff7f2;
+  }
+
+  .purpose-heading {
+    max-width: 520px;
+  }
+
+  .purpose-copy {
+    max-width: 760px;
+  }
+
+  .purpose-copy p {
+    color: #5f526b;
+    font-size: 19px;
+    line-height: 1.78;
+    margin: 0 0 24px;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    padding: 0 8% 96px;
+    background: #fff7f2;
+  }
+
+  .feature-card {
+    background:
+      radial-gradient(circle at 100% 0%, rgba(255, 80, 163, 0.12), transparent 32%),
+      #ffffff;
+    border: 1px solid #f4d8e6;
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: 0 20px 56px rgba(255, 80, 163, 0.1);
+  }
+
+  .feature-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .feature-card h3 {
+    color: #241f2b;
+    font-size: 24px;
+    line-height: 1.1;
     letter-spacing: -0.04em;
+    margin: 0 0 14px;
+  }
+
+  .feature-card p {
+    color: #6d6475;
+    font-size: 16px;
+    line-height: 1.7;
     margin: 0;
   }
 
-  .hero p,
-  .section p,
-  .values p {
-    color: #6b6258;
-    font-size: 18px;
-    line-height: 1.7;
-  }
+  @media (max-width: 920px) {
+    .about-hero {
+      min-height: 360px;
+      padding: 130px 6% 64px;
+    }
 
-  .hero p {
-    font-size: 21px;
-    max-width: 720px;
-  }
+    .about-logo {
+      width: 150px;
+    }
 
-  .section {
-    padding: 60px 8%;
-  }
-
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 60px;
-  }
-
-  .values {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    padding: 50px 8% 90px;
-  }
-
-  .values article {
-    background: white;
-    border: 1px solid #eadfce;
-    border-radius: 28px;
-    padding: 28px;
-    box-shadow: 0 18px 40px rgba(47, 42, 36, 0.08);
-  }
-
-  .values h3 {
-    font-size: 24px;
-    margin: 0 0 10px;
-  }
-
-  @media (max-width: 800px) {
-    .split,
-    .values {
+    .purpose-section {
       grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 64px 6%;
+    }
+
+    .feature-grid {
+      grid-template-columns: 1fr;
+      padding: 0 6% 72px;
+    }
+
+    .about-content {
+      padding: 64px 6% 38px;
+    }
+
+    .story-copy {
+      text-align: left;
+    }
+
+    .breadcrumb,
+    .story-heading {
+      text-align: center;
+      justify-content: center;
     }
   }
 </style>

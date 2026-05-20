@@ -49,7 +49,11 @@ const websiteSchema = {
 
         <div class="hero-content">
           <p class="eyebrow animate delay-1">Learning Through Play</p>
-          <h1 class="animate delay-2">Playful toys for curious little explorers.</h1>
+
+          <h1 class="hero-title animate delay-2">
+            Playful toys for curious little explorers.
+          </h1>
+
           <p class="hero-text animate delay-3">
             Jagsy Joy creates toddler-friendly busy boards designed to support
             fine motor skills, independent play, and everyday discovery.
@@ -79,6 +83,28 @@ const websiteSchema = {
         </div>
       </section>
 
+      <section class="skills-section">
+        <div class="skills-heading">
+          <p class="eyebrow">15 Practical Life Skills</p>
+          <h2>Busy boards that turn everyday actions into playful learning.</h2>
+          <p>
+            From zippers and buckles to counting and color matching, Jagsy Joy busy
+            boards help toddlers practice real-life skills through hands-on,
+            screen-free play.
+          </p>
+        </div>
+
+        <div class="skills-image-grid">
+          <figure class="skills-image-card">
+            <img src="/images/pink-busy-board-skills.jpg" alt="Pink busy board practical life skills" />
+          </figure>
+
+          <figure class="skills-image-card">
+            <img src="/images/blue-busy-board-skills.jpg" alt="Blue busy board practical life skills" />
+          </figure>
+        </div>
+      </section>
+
       <section class="section split">
         <div>
           <p class="eyebrow">Why Jagsy Joy</p>
@@ -92,6 +118,97 @@ const websiteSchema = {
         </p>
       </section>
 
+      <section class="testimonials-section">
+        <div class="testimonial-heading">
+          <p class="eyebrow">Testimonials</p>
+          <h2>Loved by little learners.</h2>
+          <p>
+            Real feedback from families using Jagsy Joy for screen-free play, travel,
+            and everyday skill-building.
+          </p>
+        </div>
+
+        <div class="testimonial-carousel-wrap">
+          <button
+            class="carousel-arrow carousel-arrow-left"
+            type="button"
+            aria-label="Previous testimonials"
+          >
+            ‹
+          </button>
+
+          <div class="testimonial-carousel" aria-label="Customer testimonials">
+            <article class="testimonial-card">
+              <img class="testimonial-avatar" src="/images/avatar-amanda.jpg" alt="Amanda R." />
+              <p class="stars">★★★★★</p>
+              <p class="review">
+                “My toddler stayed focused longer than usual. She loved the buckles,
+                zipper, and hands-on details.”
+              </p>
+              <p class="customer">Amanda R.</p>
+            </article>
+
+            <article class="testimonial-card">
+              <img class="testimonial-avatar" src="/images/avatar-melissa.jpg" alt="Melissa K." />
+              <p class="stars">★★★★★</p>
+              <p class="review">
+                “Perfect for quiet play. We use it during car rides and it keeps my son
+                busy without needing a screen.”
+              </p>
+              <p class="customer">Melissa K.</p>
+            </article>
+
+            <article class="testimonial-card">
+              <img class="testimonial-avatar" src="/images/avatar-rachel.jpg" alt="Rachel T." />
+              <p class="stars">★★★★★</p>
+              <p class="review">
+                “The colors are bright, the activities are simple, and it feels like a
+                fun way to practice everyday skills.”
+              </p>
+              <p class="customer">Rachel T.</p>
+            </article>
+
+            <article class="testimonial-card">
+              <img class="testimonial-avatar" src="/images/avatar-nicole.jpg" alt="Nicole S." />
+              <p class="stars">★★★★★</p>
+              <p class="review">
+                “A sweet gift for toddlers. It feels playful, useful, and easy to bring
+                along when we travel.”
+              </p>
+              <p class="customer">Nicole S.</p>
+            </article>
+
+            <article class="testimonial-card">
+              <img class="testimonial-avatar" src="/images/avatar-jessica.jpg" alt="Jessica M." />
+              <p class="stars">★★★★★</p>
+              <p class="review">
+                “My little one keeps coming back to it. The activities are simple, but
+                they hold her attention.”
+              </p>
+              <p class="customer">Jessica M.</p>
+            </article>
+
+            <article class="testimonial-card">
+              <img class="testimonial-avatar" src="/images/avatar-lauren.jpg" alt="Lauren P." />
+              <p class="stars">★★★★★</p>
+              <p class="review">
+                “Great for screen-free moments at home. It gives my child something
+                calm and hands-on to explore.”
+              </p>
+              <p class="customer">Lauren P.</p>
+            </article>
+          </div>
+
+          <button
+            class="carousel-arrow carousel-arrow-right"
+            type="button"
+            aria-label="Next testimonials"
+          >
+            ›
+          </button>
+        </div>
+      </section>
+
       <section class="cta">
         <p class="eyebrow">Explore The Collection</p>
         <h2>Find a busy board for everyday learning moments.</h2>
@@ -100,6 +217,28 @@ const websiteSchema = {
     </main>
 
     <Footer />
+
+    <script>
+      const carousel = document.querySelector('.testimonial-carousel');
+      const prevButton = document.querySelector('.carousel-arrow-left');
+      const nextButton = document.querySelector('.carousel-arrow-right');
+
+      if (carousel && prevButton && nextButton) {
+        const scrollTestimonials = (direction) => {
+          const card = carousel.querySelector('.testimonial-card');
+          const cardWidth = card ? card.getBoundingClientRect().width : 280;
+          const gap = 22;
+
+          carousel.scrollBy({
+            left: direction * (cardWidth + gap),
+            behavior: 'smooth',
+          });
+        };
+
+        prevButton.addEventListener('click', () => scrollTestimonials(-1));
+        nextButton.addEventListener('click', () => scrollTestimonials(1));
+      }
+    </script>
   </body>
 </html>
 
@@ -121,15 +260,15 @@ const websiteSchema = {
   }
 
   .hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 150px 8% 90px;
-  box-sizing: border-box;
-  overflow: hidden;
-  isolation: isolate;
- }
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 150px 8% 90px;
+    box-sizing: border-box;
+    overflow: hidden;
+    isolation: isolate;
+  }
 
   .hero-bg {
     position: absolute;
@@ -172,19 +311,22 @@ const websiteSchema = {
     margin: 0 0 16px;
   }
 
-  h1 {
-  font-size: clamp(56px, 7.2vw, 104px);
-  line-height: 0.95;
-  letter-spacing: 0.005em;
-  margin: 0;
-  color: #ff50a3;
-  -webkit-text-fill-color: #ff50a3;
-  background: none;
-  text-shadow:
-    0 2px 0 #ffffff,
-    0 8px 24px rgba(255, 80, 163, 0.28);
+  .hero-title {
+    font-size: clamp(56px, 7.2vw, 104px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin: 0;
+    color: #ff50a3;
+    -webkit-text-fill-color: #ff50a3;
+    background: none;
+    background-image: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    text-shadow:
+      0 2px 0 #ffffff,
+      0 6px 0 rgba(255, 255, 255, 0.72),
+      0 12px 28px rgba(255, 80, 163, 0.26);
   }
-    
 
   h2 {
     font-size: clamp(34px, 4vw, 58px);
@@ -292,6 +434,60 @@ const websiteSchema = {
     margin-right: auto;
   }
 
+  .skills-section {
+    padding: 96px 8%;
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255, 80, 163, 0.12), transparent 30%),
+      radial-gradient(circle at 88% 8%, rgba(69, 199, 244, 0.12), transparent 28%),
+      #fff7f2;
+  }
+
+  .skills-heading {
+    max-width: 920px;
+    margin: 0 auto 52px;
+    text-align: center;
+  }
+
+  .skills-heading h2 {
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    margin: 0 0 20px;
+    color: #241f2b;
+  }
+
+  .skills-heading p:last-child {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #6d6475;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .skills-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    max-width: 1380px;
+    margin: 0 auto;
+  }
+
+  .skills-image-card {
+    margin: 0;
+    border-radius: 34px;
+    border: 1px solid #f4d8e6;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 24px 68px rgba(255, 80, 163, 0.12);
+    overflow: hidden;
+  }
+
+  .skills-image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
   .split {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -303,6 +499,183 @@ const websiteSchema = {
     color: #6d6475;
     line-height: 1.7;
     font-size: 18px;
+  }
+
+  .testimonials-section {
+    padding: 84px 0 92px;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255, 80, 163, 0.11), transparent 28%),
+      radial-gradient(circle at 88% 12%, rgba(69, 199, 244, 0.1), transparent 28%),
+      #fff7f2;
+    overflow: hidden;
+  }
+
+  .testimonial-heading {
+    max-width: 720px;
+    margin: 0 auto 38px;
+    padding: 0 8%;
+    text-align: center;
+  }
+
+  .testimonial-heading h2 {
+    font-size: clamp(36px, 4.2vw, 56px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    margin: 0 0 16px;
+    color: #241f2b;
+  }
+
+  .testimonial-heading p:last-child {
+    color: #6d6475;
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .testimonial-carousel-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .testimonial-carousel-wrap::before,
+  .testimonial-carousel-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .testimonial-carousel-wrap::before {
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      #fff7f2 0%,
+      rgba(255, 247, 242, 0.82) 38%,
+      rgba(255, 247, 242, 0) 100%
+    );
+  }
+
+  .testimonial-carousel-wrap::after {
+    right: 0;
+    background: linear-gradient(
+      270deg,
+      #fff7f2 0%,
+      rgba(255, 247, 242, 0.82) 38%,
+      rgba(255, 247, 242, 0) 100%
+    );
+  }
+
+  .testimonial-carousel {
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 8px 8% 18px;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+
+  .testimonial-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonial-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    background:
+      radial-gradient(circle at 100% 0%, rgba(255, 80, 163, 0.1), transparent 34%),
+      #ffffff;
+    border: 1px solid #f4d8e6;
+    border-radius: 28px;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: 0 18px 46px rgba(255, 80, 163, 0.1);
+  }
+
+  .testimonial-avatar {
+    width: 82px;
+    height: 82px;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    border: 4px solid #ffffff;
+    box-sizing: border-box;
+    box-shadow:
+      0 0 0 2px #ffd3e6,
+      0 12px 28px rgba(255, 80, 163, 0.18);
+    background:
+      linear-gradient(135deg, #ffe1f0, #e6f7ff);
+  }
+
+  .stars {
+    color: #ff50a3;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    margin: 0 0 14px;
+  }
+
+  .review {
+    color: #5f526b;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 18px;
+  }
+
+  .customer {
+    color: #241f2b;
+    font-size: 15px;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  .carousel-arrow {
+    position: absolute !important;
+    top: 50% !important;
+    z-index: 10 !important;
+
+    width: 52px !important;
+    height: 52px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: 0 !important;
+    border-radius: 999px !important;
+
+    background: #ff50a3 !important;
+    color: #ffffff !important;
+
+    font-size: 36px !important;
+    line-height: 1 !important;
+    font-weight: 900 !important;
+
+    cursor: pointer !important;
+    box-shadow: 0 16px 38px rgba(255, 80, 163, 0.3) !important;
+
+    transform: translateY(-50%) !important;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      opacity 0.2s ease !important;
+  }
+
+  .carousel-arrow:hover {
+    transform: translateY(-50%) scale(1.06) !important;
+    box-shadow: 0 20px 48px rgba(255, 80, 163, 0.38) !important;
+  }
+
+  .carousel-arrow-left {
+    left: 32px !important;
+  }
+
+  .carousel-arrow-right {
+    right: 32px !important;
   }
 
   .cta {
@@ -343,7 +716,7 @@ const websiteSchema = {
   @media (max-width: 920px) {
     .hero {
       min-height: auto;
-      padding: 70px 6%;
+      padding: 120px 6% 70px;
     }
 
     .hero-bg {
@@ -360,9 +733,75 @@ const websiteSchema = {
         );
     }
 
+    .hero-title {
+      font-size: clamp(48px, 14vw, 76px);
+      letter-spacing: -0.045em;
+    }
+
     .product-grid,
-    .split {
+    .split,
+    .skills-image-grid {
       grid-template-columns: 1fr;
+    }
+
+    .skills-section {
+      padding: 72px 6%;
+    }
+
+    .skills-heading {
+      margin-bottom: 34px;
+    }
+
+    .skills-image-grid {
+      gap: 22px;
+    }
+
+    .skills-image-card {
+      border-radius: 26px;
+    }
+
+    .testimonials-section {
+      padding: 68px 0 76px;
+    }
+
+    .testimonial-heading {
+      padding: 0 6%;
+      margin-bottom: 30px;
+    }
+
+    .testimonial-carousel {
+      padding: 6px 6% 16px;
+      gap: 18px;
+    }
+
+    .testimonial-card {
+      flex-basis: 255px;
+      padding: 24px 20px;
+      border-radius: 24px;
+    }
+
+    .testimonial-avatar {
+      width: 74px;
+      height: 74px;
+    }
+
+    .testimonial-carousel-wrap::before,
+    .testimonial-carousel-wrap::after {
+      width: 68px;
+    }
+
+    .carousel-arrow {
+      width: 42px !important;
+      height: 42px !important;
+      font-size: 30px !important;
+    }
+
+    .carousel-arrow-left {
+      left: 12px !important;
+    }
+
+    .carousel-arrow-right {
+      right: 12px !important;
     }
   }
 
