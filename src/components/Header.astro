@@ -2,7 +2,22 @@
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products" },
+  { 
+    label: "Blogs", 
+    href: "#",
+    subItems: [
+      { label: "Screen-Free Life Skills", href: "/blogs/busy-boards-screen-free-life-skills" },
+    ]
+  },
   { label: "About", href: "/about" },
+  { 
+    label: "Policy", 
+    href: "#",
+    subItems: [
+      { label: "Refund Policy", href: "/policy/refund-policy" },
+      { label: "Shipping Policy", href: "/policy/shipping-policy" },
+    ]
+  },
   { label: "Contact", href: "/contact" },
 ];
 ---
@@ -17,7 +32,21 @@ const navItems = [
 
     <nav class="site-nav" aria-label="Main navigation">
       {navItems.map((item) => (
-        <a class="nav-link" href={item.href}>{item.label}</a>
+        item.subItems ? (
+          <div class="nav-item-dropdown">
+            <a class="nav-link dropdown-trigger" href={item.href} aria-haspopup="true" aria-expanded="false">
+              {item.label}
+              <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="dropdown-menu">
+              {item.subItems.map((sub) => (
+                <a class="dropdown-link" href={sub.href}>{sub.label}</a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a class="nav-link" href={item.href}>{item.label}</a>
+        )
       ))}
     </nav>
   </div>
@@ -30,14 +59,49 @@ const navItems = [
       </svg>
     </a>
     <a href="/cart" class="header-icon" aria-label="Cart">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-        <path d="M3 6h18"></path>
-        <path d="M16 10a4 4 0 0 1-8 0"></path>
-      </svg>
+      <div style="position: relative; display: inline-flex;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+          <path d="M3 6h18"></path>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span id="cartCountBadge" style="display: none; position: absolute; top: -8px; right: -8px; background: #00c8ff; color: white; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 999px; line-height: 1;">0</span>
+      </div>
     </a>
   </div>
 </header>
+
+<script>
+  function updateCartCount() {
+    const badge = document.getElementById("cartCountBadge");
+    if (!badge) return;
+    try {
+      const cart = JSON.parse(localStorage.getItem("jagsy_cart") || "[]");
+      const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+      if (totalQty > 0) {
+        badge.textContent = totalQty;
+        badge.style.display = "block";
+      } else {
+        badge.style.display = "none";
+      }
+    } catch(e) {
+      console.error(e);
+    }
+  }
+
+  // Update on load
+  updateCartCount();
+
+  // Listen for updates from other pages/components
+  window.addEventListener("cartUpdated", updateCartCount);
+  
+  // Also listen for storage events in case of other tabs
+  window.addEventListener("storage", (e) => {
+    if (e.key === "jagsy_cart") {
+      updateCartCount();
+    }
+  });
+</script>
 
 <style>
   .site-header {
@@ -163,6 +227,66 @@ const navItems = [
     transform: scaleX(1) !important;
   }
 
+  /* Dropdown Styles */
+  .nav-item-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .dropdown-arrow {
+    margin-left: 6px;
+    transition: transform 0.2s ease;
+    opacity: 0.7;
+  }
+
+  .nav-item-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: white;
+    min-width: 200px;
+    border-radius: 16px;
+    padding: 12px 0;
+    box-shadow: 0 15px 40px rgba(0, 200, 255, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1000;
+    border: 1px solid #D1EFFF;
+    margin-top: 5px;
+  }
+
+  .nav-item-dropdown:hover .dropdown-menu,
+  .nav-item-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 12px 24px;
+    color: #17204A;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .dropdown-link:hover {
+    background: #F4FDFF;
+    color: #00C8FF;
+    padding-left: 28px;
+  }
+
   @media (max-width: 1024px) {
     .site-header {
       padding: 20px 5% !important;
@@ -222,6 +346,45 @@ const navItems = [
       bottom: 0px !important;
       left: 10px !important;
       right: 10px !important;
+    }
+
+    .dropdown-menu {
+      position: static;
+      transform: none;
+      width: 100%;
+      box-shadow: none;
+      border: none;
+      background: rgba(0, 200, 255, 0.05);
+      padding: 0;
+      margin: 0;
+      display: none;
+      opacity: 1;
+      visibility: visible;
+      border-radius: 8px;
+    }
+
+    .nav-item-dropdown {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .nav-item-dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-link {
+      padding: 10px 20px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .dropdown-link:hover {
+      padding-left: 20px;
+    }
+    
+    .dropdown-arrow {
+      display: none;
     }
   }
 </style>

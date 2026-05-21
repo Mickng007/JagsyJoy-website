@@ -109,13 +109,24 @@ const productSchema = {
                 <button type="button" id="increaseQty">+</button>
               </div>
 
-              <button class="add-to-cart" type="button">
-                Add to Cart
-              </button>
+              <div style="display: flex; align-items: center;">
+                <button
+                  class="add-to-cart"
+                  type="button"
+                  id="addToCartBtn"
+                  data-product-slug={product.slug}
+                  data-product-name={product.name}
+                  data-product-price={product.price}
+                  data-product-image={galleryImages[0]}
+                >
+                  Add to Cart
+                </button>
+                <span id="cartSuccessMsg" style="display: none; color: #18d6c9; font-weight: 700; font-size: 14px; margin-left: 14px;">Added to cart!</span>
+              </div>
             </div>
 
             <p class="cart-note">
-              Prototype button only. Checkout connection can be added later.
+              Add this item to your cart and review it before checkout.
             </p>
 
             <div class="quick-features">
@@ -187,6 +198,43 @@ const productSchema = {
       increaseButton?.addEventListener("click", () => {
         quantity += 1;
         if (quantityValue) quantityValue.textContent = String(quantity);
+      });
+
+      const addToCartBtn = document.querySelector("#addToCartBtn");
+      const cartSuccessMsg = document.querySelector("#cartSuccessMsg");
+
+      addToCartBtn?.addEventListener("click", () => {
+        const slug = addToCartBtn.getAttribute("data-product-slug");
+        const name = addToCartBtn.getAttribute("data-product-name");
+        const price = addToCartBtn.getAttribute("data-product-price");
+        const image = addToCartBtn.getAttribute("data-product-image");
+
+        const cartItem = { slug, name, price, image, quantity };
+
+        const existingCart = JSON.parse(localStorage.getItem("jagsy_cart") || "[]");
+
+        const existingItemIndex = existingCart.findIndex((item) => item.slug === slug);
+        if (existingItemIndex > -1) {
+          existingCart[existingItemIndex].quantity += quantity;
+        } else {
+          existingCart.push(cartItem);
+        }
+
+        localStorage.setItem("jagsy_cart", JSON.stringify(existingCart));
+        window.dispatchEvent(new Event("cartUpdated"));
+
+        if (cartSuccessMsg) {
+          cartSuccessMsg.style.display = "inline";
+          setTimeout(() => {
+            cartSuccessMsg.style.display = "none";
+          }, 3000);
+        }
+
+        const originalText = addToCartBtn.textContent;
+        addToCartBtn.textContent = "Added!";
+        setTimeout(() => {
+          addToCartBtn.textContent = originalText;
+        }, 2000);
       });
     </script>
   </body>

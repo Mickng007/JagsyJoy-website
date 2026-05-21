@@ -1,0 +1,201 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+
+const pageTitle = "Shipping Policy | Jagsy Joy";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+    <meta name="description" content="Read the Jagsy Joy shipping and delivery policy." />
+  </head>
+
+  <body>
+    <AnnouncementBar />
+    <Header />
+
+    <main>
+      <header class="policy-header">
+        <p class="eyebrow">POLICY</p>
+        <h1>Shipping Policy</h1>
+      </header>
+
+      <div class="container">
+        <article class="policy-card">
+          <section>
+            <div class="section-title">
+              <span class="icon-badge">🚚</span>
+              <h2>Shipping Policy</h2>
+            </div>
+            <p>Currently, we are running a limited-time offer for <strong>Free Shipping within the US</strong>.</p>
+          </section>
+
+          <section>
+            <div class="section-title">
+              <span class="icon-badge">📦</span>
+              <h2>Order Processing</h2>
+            </div>
+            <p>Orders are typically processed and prepared for shipment within 1-2 business days. You will receive a notification once your curious little explorer's toys are on their way.</p>
+          </section>
+
+          <section>
+            <div class="section-title">
+              <span class="icon-badge">⏱️</span>
+              <h2>Shipping Times</h2>
+            </div>
+            <p>We offer Expedited Shipping (3–5 days) and Standard Shipping (5–10 days) to the United States, Canada, and Mexico.</p>
+          </section>
+
+          <section>
+            <div class="section-title">
+              <span class="icon-badge">🔍</span>
+              <h2>Tracking</h2>
+            </div>
+            <p>Once your order has shipped, you will receive an email with a tracking number so you can follow your Jagsy Joy adventure right to your doorstep.</p>
+          </section>
+
+          <section>
+            <div class="section-title">
+              <span class="icon-badge">⚠️</span>
+              <h2>Shipping Issues</h2>
+            </div>
+            <p>If your package is delayed, lost, or arrives damaged, please contact us immediately so we can make it right for you and your little one.</p>
+          </section>
+
+          <section>
+            <div class="section-title">
+              <span class="icon-badge">✉️</span>
+              <h2>Contact Us</h2>
+            </div>
+            <p>If you have any questions or inquiries, please email <strong>support@finessynyc.com</strong>. Our team will get back to you within 24 hours.</p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  :root {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    color: #17204A;
+    background: #EAFBFF;
+  }
+
+  body {
+    margin: 0;
+    background: 
+      radial-gradient(circle at 10% 10%, rgba(0, 200, 255, 0.08), transparent 30%),
+      radial-gradient(circle at 90% 4%, rgba(24, 214, 201, 0.08), transparent 26%),
+      linear-gradient(180deg, #EAFBFF 0%, #F4FDFF 50%, #EEE8FF 100%);
+    min-height: 100vh;
+  }
+
+  .policy-header {
+    padding: 220px 8% 60px;
+    text-align: center;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #17204A;
+    font-weight: 900;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    color: #17204A;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    margin: 0;
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 8% 120px;
+  }
+
+  .policy-card {
+    background: white;
+    border: 1px solid #D1EFFF;
+    border-radius: 32px;
+    padding: 60px;
+    box-shadow: 0 20px 50px rgba(0, 200, 255, 0.04);
+  }
+
+  section {
+    margin-bottom: 48px;
+  }
+
+  section:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .icon-badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: #EAFBFF;
+    border: 1px solid #D1EFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  h2 {
+    color: #17204A;
+    font-size: 22px;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #5f526b;
+    margin-bottom: 1.5rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  strong {
+    color: #17204A;
+    font-weight: 700;
+  }
+
+  @media (max-width: 800px) {
+    .policy-header {
+      padding-top: 150px;
+    }
+    
+    .policy-card {
+      padding: 40px 24px;
+      border-radius: 24px;
+    }
+  }
+</style>
