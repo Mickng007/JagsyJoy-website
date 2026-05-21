@@ -1,65 +1,53 @@
 [
   {
-    "id": "busy-board-pink",
-    "brand": "Jagsy Joy",
     "name": "Pink Busy Board",
     "slug": "pink-busy-board",
+    "brand": "Jagsy Joy",
     "category": "Toddler Learning Toys",
     "price": "$24.99",
-    "shortDescription": "A hands-on busy board designed to help toddlers practice everyday skills through play.",
-    "longDescription": "The Jagsy Joy Pink Busy Board helps toddlers explore buckles, buttons, zippers, laces, and other everyday activities in a playful way. It is designed for quiet play, travel time, and early skill-building at home or on the go.",
-    "benefits": [
-      "Supports fine motor skills",
-      "Encourages independent play",
-      "Travel-friendly for car rides and trips",
-      "Helps toddlers practice everyday tasks"
-    ],
-    "details": [
-      "Designed for hands-on toddler learning",
-      "Helps practice buckles, buttons, zippers, laces, and everyday skills",
-      "Great for quiet play at home, in the car, or while traveling",
-      "Soft, lightweight, and easy for little hands to explore",
-      "Encourages screen-free play and independent discovery"
-    ],
     "ageRange": "Toddlers",
     "material": "Soft fabric and activity hardware",
-    "image": "/images/pink-busy-board.jpg",
+    "image": "/images/pink-busy-board-2.jpg",
     "images": [
-      "/images/pink-busy-board.jpg",
       "/images/pink-busy-board-2.jpg",
       "/images/pink-busy-board-3.jpg",
       "/images/pink-busy-board-4.jpg",
       "/images/pink-busy-board-5.jpg",
       "/images/pink-busy-board-6.jpg"
+    ],
+    "shortDescription": "A pink toddler busy book designed for screen-free learning, practical life skills, early development, and travel-friendly play.",
+    "longDescription": "Spark curiosity and engage your toddler with the Jagsy Joy Pink Busy Board. This interactive toddler busy book includes hands-on activities such as an abacus, felt fingers, colorful alphabet learning, buckles, zippers, buttons, shoelaces, belts, and counting activities. Designed to support practical life skills, problem-solving, hand-eye coordination, fine motor development, and early cognitive learning, it gives little learners a fun way to explore numbers, letters, colors, and everyday movements. Lightweight and portable with easy-carry handles, this busy board is ideal for car rides, long journeys, quiet play, or everyday learning at home. Made with soft, durable felt and securely stitched details, it is designed for safe toddler play with no loose parts. The busy book unzips into two boards for shared play, making it a thoughtful gift for birthdays, holidays, or any special occasion for boys and girls.",
+    "details": [
+      "Includes interactive toddler activities such as an abacus, felt fingers, colorful alphabet, buckles, zippers, buttons, shoelaces, belts, and counting elements.",
+      "Designed to help toddlers explore numbers, letters, colors, counting, and everyday practical life skills through hands-on play.",
+      "Supports early development skills including problem-solving, hand-eye coordination, fine motor skills, focus, and independent play.",
+      "Lightweight and portable with easy-carry handles, making it useful for toddler car activities, travel, long journeys, quiet time, and home play.",
+      "Made with soft, durable felt and securely stitched details for a toddler-friendly play experience.",
+      "No loose parts, safe and secure for supervised toddler play.",
+      "Unzips into two boards for shared play, allowing more than one child or parent-child interaction.",
+      "Makes a thoughtful toddler gift for birthdays, holidays, travel, learning activities, or everyday screen-free play."
+    ],
+    "benefits": [
+      "Encourages screen-free play and hands-on exploration.",
+      "Helps toddlers practice practical life skills through everyday movements.",
+      "Supports early number, letter, color, and counting recognition.",
+      "Promotes fine motor skills, hand-eye coordination, and problem-solving.",
+      "Keeps toddlers engaged during car rides, travel, quiet time, and at-home play.",
+      "Soft felt construction and secure stitching are designed for toddler-friendly use.",
+      "Portable design with handles makes it easy to carry anywhere.",
+      "Great gift idea for toddlers, boys, and girls."
     ]
   },
   {
-    "id": "busy-board-blue",
-    "brand": "Jagsy Joy",
     "name": "Blue Busy Board",
     "slug": "blue-busy-board",
+    "brand": "Jagsy Joy",
     "category": "Toddler Learning Toys",
     "price": "$24.99",
-    "shortDescription": "A hands-on blue busy board designed to help toddlers practice everyday skills through play.",
-    "longDescription": "The Jagsy Joy Blue Busy Board helps toddlers explore buckles, buttons, zippers, laces, and other everyday activities in a playful way. It is designed for quiet play, travel time, and early skill-building at home or on the go.",
-    "benefits": [
-      "Supports fine motor skills",
-      "Encourages independent play",
-      "Travel-friendly for car rides and trips",
-      "Helps toddlers practice everyday tasks"
-    ],
-    "details": [
-      "Designed for hands-on toddler learning",
-      "Helps practice buckles, buttons, zippers, laces, and everyday skills",
-      "Great for quiet play at home, in the car, or while traveling",
-      "Soft, lightweight, and easy for little hands to explore",
-      "Encourages screen-free play and independent discovery"
-    ],
     "ageRange": "Toddlers",
     "material": "Soft fabric and activity hardware",
-    "image": "/images/blue-busy-board.jpg",
+    "image": "/images/blue-busy-board-1.jpg",
     "images": [
-      "/images/blue-busy-board.jpg",
       "/images/blue-busy-board-1.jpg",
       "/images/blue-busy-board-2.jpg",
       "/images/blue-busy-board-3.jpg",
@@ -68,6 +56,28 @@
       "/images/blue-busy-board-6.jpg",
       "/images/blue-busy-board-7.jpg",
       "/images/blue-busy-board-8.jpg"
+    ],
+    "shortDescription": "A blue toddler busy board designed for hands-on learning, fine motor practice, counting, clock reading, and screen-free travel play.",
+    "longDescription": "The Jagsy Joy Blue Busy Board is designed to make early learning feel fun, practical, and screen-free. This hands-on toddler activity board includes adjustment buckles, buckles, toggles, turning gears, counting activities, count-to-10 practice, clock reading, zippers, laces, buttons, and everyday skill-building elements. It helps toddlers practice fine motor skills, hand-eye coordination, sensory learning, problem-solving, focus, and independent play. Built with soft fabric and durable activity parts, this busy board is made for quiet play at home, in the car, during travel, or while waiting on the go. Bright colors and interactive pieces keep little learners engaged while helping them explore real-life movements in a playful way.",
+    "details": [
+      "Includes adjustment buckle, buckles, toggle, turning gears, counting fun, count-to-10 practice, clock reading, zippers, laces, buttons, and hands-on activity parts.",
+      "Designed to support fine motor skills, sensory learning, hand-eye coordination, problem-solving, and independent discovery.",
+      "Helps toddlers practice real-life movements such as fastening, pulling, turning, counting, matching, and exploring textures.",
+      "Clock reading and counting activities introduce early number skills in a playful, toddler-friendly way.",
+      "Turning gears, toggles, and buckles provide hands-on practice for coordination and focus.",
+      "Portable busy board format makes it useful for travel, car rides, quiet play, restaurants, waiting rooms, and at-home learning.",
+      "Made with soft fabric and durable activity hardware for everyday toddler play.",
+      "Bright colors and interactive features help keep toddlers engaged without screens."
+    ],
+    "benefits": [
+      "Supports screen-free learning through hands-on activity.",
+      "Helps develop fine motor skills and hand-eye coordination.",
+      "Encourages early counting, clock reading, and number recognition.",
+      "Builds problem-solving skills through buckles, toggles, gears, and everyday tasks.",
+      "Promotes focus, sensory exploration, and independent play.",
+      "Travel-friendly design keeps toddlers engaged during car rides and long journeys.",
+      "Bright, colorful layout makes learning feel playful and approachable.",
+      "Useful gift idea for toddlers, boys, and girls."
     ]
   }
 ]

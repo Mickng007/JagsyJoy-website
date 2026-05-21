@@ -1,0 +1,237 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sign In | Jagsy Joy</title>
+    <meta name="description" content="Sign in to your Jagsy Joy account." />
+  </head>
+
+  <body>
+    <AnnouncementBar />
+    <Header />
+
+    <main>
+      <section class="auth-section">
+        <div class="auth-container">
+          <div class="auth-header">
+            <p class="eyebrow">Sign In</p>
+            <h1>Welcome back.</h1>
+            <p>Enter your details to access your Jagsy Joy account.</p>
+          </div>
+
+          <form id="signInForm" class="auth-form">
+            <div class="input-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="hello@example.com" />
+            </div>
+
+            <div class="input-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required placeholder="••••••••" />
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+
+            <button type="submit" class="button primary">Sign In</button>
+          </form>
+
+          <p class="auth-footer">
+            Don't have an account? <a href="/create-account">Create an account</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      const form = document.getElementById('signInForm');
+      const errorDiv = document.getElementById('errorMessage');
+
+      form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Get saved accounts
+        const accounts = JSON.parse(localStorage.getItem('jagsy_joy_accounts') || '[]');
+        
+        // Find matching account
+        const user = accounts.find(a => a.email === email && a.password === password);
+
+        if (user) {
+          // Save session
+          localStorage.setItem('jagsy_joy_session', JSON.stringify({
+            name: user.name,
+            email: user.email
+          }));
+          window.location.href = '/account';
+        } else {
+          errorDiv.textContent = 'Invalid email or password. Please try again.';
+          errorDiv.style.display = 'block';
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  :root {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    color: #17204A;
+    background: #EAFBFF;
+  }
+
+  body {
+    margin: 0;
+    background: #EAFBFF;
+  }
+
+  .auth-section {
+    padding: 210px 8% 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .auth-container {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 60px 48px;
+    border-radius: 40px;
+    border: 1px solid #D1EFFF;
+    box-shadow: 0 30px 90px rgba(23, 32, 74, 0.08);
+    text-align: center;
+  }
+
+  .auth-header {
+    margin-bottom: 40px;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 13px;
+    font-weight: 900;
+    color: #17204A;
+    margin: 0 0 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    font-weight: 900;
+  }
+
+  .auth-header p {
+    color: #5f526b;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .auth-form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-group label {
+    font-weight: 800;
+    font-size: 14px;
+    color: #17204A;
+    margin-left: 4px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1.5px solid #D1EFFF;
+    background: #F4FDFF;
+    font-size: 16px;
+    color: #17204A;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+
+  .input-group input:focus {
+    border-color: #00C8FF;
+  }
+
+  .error-message {
+    display: none;
+    color: #ff6b6b;
+    font-size: 14px;
+    font-weight: 700;
+    background: #fff0f0;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 0 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .primary {
+    background: linear-gradient(135deg, #00C8FF, #18D6C9);
+    color: white;
+    box-shadow: 0 14px 30px rgba(0, 200, 255, 0.2);
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(0, 200, 255, 0.26);
+  }
+
+  .auth-footer {
+    margin-top: 32px;
+    font-size: 15px;
+    color: #5f526b;
+  }
+
+  .auth-footer a {
+    color: #00C8FF;
+    text-decoration: none;
+    font-weight: 800;
+  }
+
+  @media (max-width: 600px) {
+    .auth-section {
+      padding-top: 150px;
+    }
+    
+    .auth-container {
+      padding: 40px 24px;
+      border-radius: 32px;
+    }
+  }
+</style>

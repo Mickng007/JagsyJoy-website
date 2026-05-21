@@ -1,0 +1,276 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+
+const accountSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "My Account | Jagsy Joy",
+  url: "http://localhost:4321/account",
+  description: "Manage your Jagsy Joy account, view orders, and save your favorite toddler learning toys.",
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>My Account | Jagsy Joy</title>
+    <meta name="description" content="Sign in or create a Jagsy Joy account to manage your orders and favorites." />
+    <script type="application/ld+json" set:html={JSON.stringify(accountSchema)} />
+    <style>
+      [data-auth-state] {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <AnnouncementBar />
+    <Header />
+
+    <main>
+      <!-- Guest State -->
+      <div id="guestState" data-auth-state="guest">
+        <section class="hero">
+          <p class="eyebrow">My Account</p>
+          <h1>Welcome to your Jagsy Joy account.</h1>
+          <p class="hero-text">
+            Sign in or create an account to view orders, save favorites, and manage your details.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="/sign-in">Sign In</a>
+            <a class="button secondary" href="/create-account">Create Account</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Auth State -->
+      <div id="authState" data-auth-state="auth">
+        <section class="hero">
+          <p class="eyebrow">My Account</p>
+          <h1 id="welcomeName">Welcome back!</h1>
+          <p class="hero-text">
+            Manage your Jagsy Joy account, orders, and saved favorites.
+          </p>
+
+          <div class="hero-actions">
+            <button id="signOutBtn" class="button secondary">Sign Out</button>
+          </div>
+        </section>
+
+        <section class="account-options">
+          <div class="container">
+            <div class="options-grid">
+              <article class="option-card">
+                <div class="icon">📦</div>
+                <h3>Order History</h3>
+                <p>View and track your previous Jagsy Joy orders.</p>
+                <a href="#" class="link">View Orders</a>
+              </article>
+
+              <article class="option-card">
+                <div class="icon">💖</div>
+                <h3>Saved Favorites</h3>
+                <p>Keep track of the toys your little one loves most.</p>
+                <a href="#" class="link">View Favorites</a>
+              </article>
+
+              <article class="option-card">
+                <div class="icon">⚙️</div>
+                <h3>Account Details</h3>
+                <p>Update your email, password, and shipping address.</p>
+                <a href="#" class="link">Edit Details</a>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      function checkAuth() {
+        const currentUser = localStorage.getItem('jagsy_joy_session');
+        const guestState = document.getElementById('guestState');
+        const authState = document.getElementById('authState');
+        const welcomeName = document.getElementById('welcomeName');
+
+        if (currentUser) {
+          const user = JSON.parse(currentUser);
+          if (welcomeName) welcomeName.textContent = `Welcome back, ${user.name}.`;
+          if (guestState) guestState.style.display = 'none';
+          if (authState) authState.style.display = 'block';
+        } else {
+          if (guestState) guestState.style.display = 'block';
+          if (authState) authState.style.display = 'none';
+        }
+      }
+
+      // Initial check
+      checkAuth();
+
+      // Sign out logic
+      document.getElementById('signOutBtn')?.addEventListener('click', () => {
+        localStorage.removeItem('jagsy_joy_session');
+        window.location.reload();
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  :root {
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    color: #17204A;
+    background: #EAFBFF;
+  }
+
+  body {
+    margin: 0;
+    background: #EAFBFF;
+  }
+
+  .hero {
+    padding: 210px 8% 80px;
+    max-width: 900px;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 13px;
+    font-weight: 900;
+    color: #17204A;
+    margin: 0 0 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+    color: #17204A;
+    font-weight: 900;
+    text-shadow: none;
+  }
+
+  .hero-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #5f526b;
+    margin-bottom: 32px;
+    max-width: 680px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .primary {
+    background: linear-gradient(135deg, #00C8FF, #18D6C9);
+    color: white;
+    box-shadow: 0 14px 30px rgba(0, 200, 255, 0.2);
+  }
+
+  .secondary {
+    background: white;
+    color: #17204A;
+    border: 1px solid #D1EFFF;
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(0, 200, 255, 0.26);
+  }
+
+  .account-options {
+    padding: 40px 0 100px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 8%;
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .option-card {
+    background: white;
+    border: 1px solid #D1EFFF;
+    border-radius: 32px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 200, 255, 0.04);
+    transition: transform 0.3s ease;
+  }
+
+  .option-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .icon {
+    font-size: 48px;
+    margin-bottom: 24px;
+  }
+
+  .option-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 900;
+    color: #17204A;
+    line-height: 1.2;
+  }
+
+  .option-card p {
+    color: #5f526b;
+    font-size: 16px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .link {
+    color: #00C8FF;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    .options-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero {
+      padding-top: 150px;
+    }
+  }
+</style>

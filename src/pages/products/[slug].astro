@@ -1,281 +1,195 @@
 ---
-
 import products from '../../data/products.json';
-
 import Header from '../../components/Header.astro';
-
 import Footer from '../../components/Footer.astro';
 
 export function getStaticPaths() {
-
   return products.map((product) => ({
-
     params: { slug: product.slug },
-
     props: { product },
-
   }));
-
 }
 
 const { product } = Astro.props;
 
-const galleryImages = product.images && product.images.length > 0 ? product.images : [product.image];
+const galleryImages =
+  product.images && product.images.length > 0 ? product.images : [product.image];
 
 const productSchema = {
-
   "@context": "https://schema.org",
-
   "@type": "Product",
-
   name: product.name,
-
   brand: {
-
     "@type": "Brand",
-
     name: product.brand,
-
   },
-
   description: product.shortDescription,
-
   image: galleryImages,
-
   category: product.category,
-
   offers: {
-
     "@type": "Offer",
-
     priceCurrency: "USD",
-
     price: product.price?.replace("$", ""),
-
     availability: "https://schema.org/InStock",
-
   },
-
 };
-
 ---
 
 <html lang="en">
-
   <head>
-
     <meta charset="utf-8" />
-
     <meta name="viewport" content="width=device-width" />
-
     <title>{product.name} | Jagsy Joy</title>
-
     <meta name="description" content={product.shortDescription} />
-
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-
   </head>
 
   <body>
-
     <Header />
 
     <main>
+      <div class="product-page-top">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>›</span>
+          <a href="/products">Products</a>
+          <span>›</span>
+          <span class="current">{product.name}</span>
+        </nav>
 
-      <section class="product-hero">
-
-        <div class="gallery">
-
-          <div class="main-image-wrap">
-
-            <img
-
-              id="mainProductImage"
-
-              class="main-product-image"
-
-              src={galleryImages[0]}
-
-              alt={product.name}
-
-            />
-
-          </div>
-
-          <div class="thumbnail-grid" aria-label={`${product.name} image gallery`}>
-
-            {galleryImages.map((image, index) => (
-
-              <button
-
-                class={`thumbnail-button ${index === 0 ? 'active' : ''}`}
-
-                type="button"
-
-                data-image={image}
-
-                aria-label={`View ${product.name} image ${index + 1}`}
-
-              >
-
-                <img src={image} alt={`${product.name} thumbnail ${index + 1}`} />
-
-              </button>
-
-            ))}
-
-          </div>
-
-        </div>
-
-        <div class="product-info">
-
-          <p class="eyebrow">{product.category}</p>
-
-          <h1>{product.name}</h1>
-
-          <p class="intro">{product.shortDescription}</p>
-
-          <p class="price">{product.price}</p>
-
-          <div class="details">
-
-            <p><strong>Brand:</strong> {product.brand}</p>
-
-            <p><strong>Age Range:</strong> {product.ageRange}</p>
-
-            <p><strong>Material:</strong> {product.material}</p>
-
-          </div>
-
-          <div class="purchase-row">
-
-            <div class="quantity-selector" aria-label="Quantity selector">
-
-              <button type="button" id="decreaseQty">−</button>
-
-              <span id="quantityValue">1</span>
-
-              <button type="button" id="increaseQty">+</button>
-
+        <section class="product-hero">
+          <div class="gallery">
+            <div class="main-image-wrap">
+              <img
+                id="mainProductImage"
+                class="main-product-image"
+                src={galleryImages[0]}
+                alt={product.name}
+              />
             </div>
 
-            <button class="add-to-cart" type="button">
-
-              Add to Cart
-
-            </button>
-
+            <div class="thumbnail-grid" aria-label={`${product.name} image gallery`}>
+              {galleryImages.map((image, index) => (
+                <button
+                  class={`thumbnail-button ${index === 0 ? 'active' : ''}`}
+                  type="button"
+                  data-image={image}
+                  aria-label={`View ${product.name} image ${index + 1}`}
+                >
+                  <img src={image} alt={`${product.name} thumbnail ${index + 1}`} />
+                </button>
+              ))}
+            </div>
           </div>
 
-          <p class="cart-note">
+          <div class="product-info">
+            <p class="eyebrow">{product.category}</p>
 
-            Prototype button only. Checkout connection can be added later.
+            <h1>{product.name}</h1>
 
-          </p>
+            <p class="intro">{product.shortDescription}</p>
 
-        </div>
+            <div class="review-row" aria-label="Product rating">
+              <span class="review-stars">★★★★★</span>
+              <span class="review-text">4.9 · Loved by parents</span>
+            </div>
 
-      </section>
+            <p class="price">{product.price}</p>
 
-      <section class="section">
+            <div class="details">
+              <p><strong>Brand:</strong> {product.brand}</p>
+              <p><strong>Age Range:</strong> {product.ageRange}</p>
+              <p><strong>Material:</strong> {product.material}</p>
+            </div>
 
+            <div class="purchase-row">
+              <div class="quantity-selector" aria-label="Quantity selector">
+                <button type="button" id="decreaseQty">−</button>
+                <span id="quantityValue">1</span>
+                <button type="button" id="increaseQty">+</button>
+              </div>
+
+              <button class="add-to-cart" type="button">
+                Add to Cart
+              </button>
+            </div>
+
+            <p class="cart-note">
+              Prototype button only. Checkout connection can be added later.
+            </p>
+
+            <div class="quick-features">
+              <h2>Why parents love it</h2>
+              <ul>
+                {product.benefits.slice(0, 4).map((benefit) => (
+                  <li>{benefit}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="section overview-section">
         <h2>Product Overview</h2>
-
         <p>{product.longDescription}</p>
-
       </section>
 
-      <section class="section">
-
+      <section class="section detail-section">
         <h2>Product Details</h2>
-
         <ul>
-
           {(product.details || product.benefits).map((detail) => (
-
             <li>{detail}</li>
-
           ))}
-
         </ul>
-
       </section>
 
-      <section class="section">
-
+      <section class="section benefit-section">
         <h2>Key Benefits</h2>
-
         <ul>
-
           {product.benefits.map((benefit) => (
-
             <li>{benefit}</li>
-
           ))}
-
         </ul>
-
       </section>
-
     </main>
 
     <Footer />
 
     <script>
-
       const mainImage = document.querySelector("#mainProductImage");
-
       const thumbnailButtons = document.querySelectorAll(".thumbnail-button");
 
       thumbnailButtons.forEach((button) => {
-
         button.addEventListener("click", () => {
-
           const image = button.getAttribute("data-image");
 
           if (mainImage && image) {
-
             mainImage.setAttribute("src", image);
-
           }
 
           thumbnailButtons.forEach((item) => item.classList.remove("active"));
-
           button.classList.add("active");
-
         });
-
       });
 
       const decreaseButton = document.querySelector("#decreaseQty");
-
       const increaseButton = document.querySelector("#increaseQty");
-
       const quantityValue = document.querySelector("#quantityValue");
 
       let quantity = 1;
 
       decreaseButton?.addEventListener("click", () => {
-
         quantity = Math.max(1, quantity - 1);
-
         if (quantityValue) quantityValue.textContent = String(quantity);
-
       });
 
       increaseButton?.addEventListener("click", () => {
-
         quantity += 1;
-
         if (quantityValue) quantityValue.textContent = String(quantity);
-
       });
-
     </script>
-
   </body>
-
 </html>
 
 <style>
@@ -283,16 +197,47 @@ const productSchema = {
     font-family:
       Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", sans-serif;
-    color: #241f2b;
-    background: #fff7f2;
+    color: #17204a;
+    background: #eafbff;
   }
 
   body {
     margin: 0;
     background:
-      radial-gradient(circle at 10% 10%, rgba(255, 125, 184, 0.12), transparent 30%),
-      radial-gradient(circle at 90% 4%, rgba(69, 199, 244, 0.12), transparent 26%),
-      linear-gradient(180deg, #fff7f2 0%, #fff2f8 50%, #f4fbff 100%);
+      radial-gradient(circle at 10% 10%, rgba(0, 200, 255, 0.08), transparent 30%),
+      radial-gradient(circle at 90% 4%, rgba(24, 214, 201, 0.08), transparent 26%),
+      linear-gradient(180deg, #eafbff 0%, #f4fdff 50%, #eee8ff 100%);
+  }
+
+  .product-page-top {
+    padding: 250px 8% 80px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 1440px;
+    margin: 0 auto 34px;
+    color: #5f526b;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .breadcrumb a {
+    color: #5f526b;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: #00c8ff;
+  }
+
+  .breadcrumb .current {
+    color: #17204a;
+    font-weight: 900;
   }
 
   .product-hero {
@@ -300,7 +245,8 @@ const productSchema = {
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: start;
-    padding: 120px 8% 80px;
+    max-width: 1440px;
+    margin: 0 auto;
   }
 
   .gallery {
@@ -314,9 +260,9 @@ const productSchema = {
     aspect-ratio: 1 / 1;
     border-radius: 36px;
     overflow: hidden;
-    background: white;
-    border: 1px solid #f3d6e4;
-    box-shadow: 0 18px 40px rgba(255, 79, 163, 0.08);
+    background: #ffffff;
+    border: 1px solid #d1efff;
+    box-shadow: 0 18px 40px rgba(0, 200, 255, 0.06);
   }
 
   .main-product-image {
@@ -333,8 +279,8 @@ const productSchema = {
   }
 
   .thumbnail-button {
-    border: 1px solid #f3d6e4;
-    background: white;
+    border: 1px solid #d1efff;
+    background: #ffffff;
     border-radius: 18px;
     padding: 8px;
     aspect-ratio: 1 / 1;
@@ -348,8 +294,8 @@ const productSchema = {
 
   .thumbnail-button:hover,
   .thumbnail-button.active {
-    border-color: #ff4fa3;
-    box-shadow: 0 10px 24px rgba(255, 79, 163, 0.12);
+    border-color: #00c8ff;
+    box-shadow: 0 10px 24px rgba(0, 200, 255, 0.1);
     transform: translateY(-2px);
   }
 
@@ -361,7 +307,7 @@ const productSchema = {
   }
 
   .product-info {
-    padding-top: 28px;
+    padding-top: 0;
   }
 
   .eyebrow {
@@ -369,52 +315,77 @@ const productSchema = {
     letter-spacing: 0.14em;
     font-size: 13px;
     font-weight: 900;
-    color: #ff4fa3;
+    color: #17204a;
     margin: 0;
   }
 
   h1 {
-    font-size: clamp(44px, 6vw, 82px);
-    line-height: 0.95;
-    letter-spacing: -0.05em;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
     margin: 12px 0 24px;
-    color: #241f2b;
+    color: #17204a;
+    font-weight: 900;
   }
 
   h2 {
-    font-size: clamp(32px, 4vw, 42px);
-    letter-spacing: -0.03em;
-    margin-bottom: 16px;
-    color: #241f2b;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: #17204a;
+    font-weight: 900;
   }
 
   .intro {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.6;
-    color: #6d6475;
+    color: #5f526b;
+  }
+
+    .review-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0 0;
+  }
+
+  .review-stars {
+    color: #ffb800;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .review-text {
+    color: #5f526b;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
   }
 
   .price {
-    font-size: 38px;
+    font-size: 24px;
     line-height: 1;
     font-weight: 900;
     letter-spacing: -0.04em;
     margin: 28px 0;
-    color: #ff4fa3;
+    color: #00c8ff;
   }
 
   .details {
-    background: white;
-    border: 1px solid #f3d6e4;
+    background: #ffffff;
+    border: 1px solid #d1efff;
     border-radius: 24px;
     padding: 20px;
     margin: 28px 0;
-    box-shadow: 0 10px 30px rgba(255, 79, 163, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 200, 255, 0.04);
   }
 
   .details p {
     margin: 8px 0;
-    color: #6d6475;
+    color: #5f526b;
+    font-size: 16px;
   }
 
   .purchase-row {
@@ -427,10 +398,10 @@ const productSchema = {
   .quantity-selector {
     display: flex;
     align-items: center;
-    border: 1px solid #f3d6e4;
+    border: 1px solid #d1efff;
     border-radius: 16px;
     overflow: hidden;
-    background: white;
+    background: #ffffff;
     height: 54px;
   }
 
@@ -438,41 +409,43 @@ const productSchema = {
     width: 50px;
     height: 54px;
     border: 0;
-    background: white;
-    color: #241f2b;
+    background: #ffffff;
+    color: #17204a;
     font-size: 22px;
     cursor: pointer;
     transition: background 0.2s;
   }
 
   .quantity-selector button:hover {
-    background: #fff2f8;
+    background: #eafbff;
   }
 
   .quantity-selector span {
     min-width: 42px;
     text-align: center;
     font-weight: 800;
-    color: #241f2b;
+    color: #17204a;
   }
 
   .add-to-cart {
     height: 54px;
     border: 0;
     border-radius: 16px;
-    background: linear-gradient(135deg, #ff7db8, #7d5cff);
-    color: white;
+    background: linear-gradient(135deg, #00c8ff, #18d6c9);
+    color: #ffffff;
     padding: 0 32px;
     font-weight: 900;
     cursor: pointer;
     font-size: 16px;
-    box-shadow: 0 14px 30px rgba(255, 79, 163, 0.24);
-    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    box-shadow: 0 14px 30px rgba(0, 200, 255, 0.2);
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease;
   }
 
   .add-to-cart:hover {
     transform: translateY(-2px);
-    box-shadow: 0 18px 40px rgba(125, 92, 255, 0.28);
+    box-shadow: 0 18px 40px rgba(0, 200, 255, 0.26);
   }
 
   .cart-note {
@@ -482,27 +455,107 @@ const productSchema = {
     opacity: 0.8;
   }
 
+  .quick-features {
+    margin-top: 28px;
+    background: #ffffff;
+    border: 1px solid #d1efff;
+    border-radius: 24px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0, 200, 255, 0.04);
+  }
+
+  .quick-features h2 {
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 14px;
+    color: #17204a;
+  }
+
+  .quick-features ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .quick-features li {
+    color: #5f526b;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .quick-features li:last-child {
+    margin-bottom: 0;
+  }
+
   .section {
-    padding: 40px 8% 60px;
-    max-width: 980px;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 44px 8%;
+  }
+
+  .section h2 {
+    margin-bottom: 18px;
   }
 
   .section p,
-  li {
-    color: #6d6475;
-    font-size: 18px;
+  .section li {
+    color: #5f526b;
+    font-size: 16px;
     line-height: 1.7;
   }
 
-  li {
+  .section p {
+    margin: 0;
+  }
+
+  .section ul {
+    margin: 0;
+    padding-left: 22px;
+  }
+
+  .section li {
     margin-bottom: 12px;
   }
 
+  .overview-section,
+  .detail-section,
+  .benefit-section {
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid #d1efff;
+    border-radius: 28px;
+    box-shadow: 0 12px 34px rgba(0, 200, 255, 0.04);
+    margin-bottom: 28px;
+  }
+
   @media (max-width: 900px) {
+    .product-page-top {
+      padding: 190px 6% 50px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 26px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
     .product-hero {
       grid-template-columns: 1fr;
       gap: 40px;
-      padding-top: 100px;
+    }
+
+    .thumbnail-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .main-image-wrap {
+      border-radius: 28px;
+    }
+
+    .section {
+      padding: 32px 6%;
+      margin-left: 6%;
+      margin-right: 6%;
     }
   }
 </style>
