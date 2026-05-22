@@ -3,11 +3,15 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import AnnouncementBar from '../components/AnnouncementBar.astro';
 
+const siteUrl = "https://jagsyjoy-website.pages.dev";
+const canonicalUrl = `${siteUrl}/about`;
+const ogImage = `${siteUrl}/images/blog-1.jpg`;
+
 const aboutSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About Jagsy Joy",
-  url: "http://localhost:4321/about",
+  url: canonicalUrl,
   description:
     "Jagsy Joy creates playful learning toys that support curiosity, fine motor skills, independent play, and screen-free discovery for toddlers.",
 };
@@ -20,8 +24,24 @@ const aboutSchema = {
     <title>About Jagsy Joy | Thoughtful Learning Toys for Toddlers</title>
     <meta
       name="description"
-      content="Learn about Jagsy Joy, a playful toddler toy brand creating busy boards and screen-free learning toys for curious little hands."
+      content="Learn about Jagsy Joy, a playful toddler toy brand creating busy boards for screen-free learning, practical life skills, and curious little hands."
     />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content="About Jagsy Joy | Thoughtful Learning Toys for Toddlers" />
+    <meta property="og:description" content="Learn about Jagsy Joy, a playful toddler toy brand creating busy boards for screen-free learning, practical life skills, and curious little hands." />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content="About Jagsy Joy | Thoughtful Learning Toys for Toddlers" />
+    <meta property="twitter:description" content="Learn about Jagsy Joy, a playful toddler toy brand creating busy boards for screen-free learning, practical life skills, and curious little hands." />
+    <meta property="twitter:image" content={ogImage} />
+
     <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
   </head>
 

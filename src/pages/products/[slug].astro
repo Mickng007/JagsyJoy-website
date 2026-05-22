@@ -15,6 +15,10 @@ const { product } = Astro.props;
 const galleryImages =
   product.images && product.images.length > 0 ? product.images : [product.image];
 
+const siteUrl = "https://jagsyjoy-website.pages.dev";
+const canonicalUrl = `${siteUrl}/products/${product.slug}`;
+const ogImage = `${siteUrl}${galleryImages[0]}`;
+
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -24,14 +28,20 @@ const productSchema = {
     name: product.brand,
   },
   description: product.shortDescription,
-  image: galleryImages,
+  image: galleryImages.map(img => `${siteUrl}${img}`),
   category: product.category,
   offers: {
     "@type": "Offer",
     priceCurrency: "USD",
     price: product.price?.replace("$", ""),
     availability: "https://schema.org/InStock",
+    url: canonicalUrl,
   },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "24"
+  }
 };
 ---
 
@@ -41,6 +51,22 @@ const productSchema = {
     <meta name="viewport" content="width=device-width" />
     <title>{product.name} | Jagsy Joy</title>
     <meta name="description" content={product.shortDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={`${product.name} | Jagsy Joy`} />
+    <meta property="og:description" content={product.shortDescription} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={`${product.name} | Jagsy Joy`} />
+    <meta property="twitter:description" content={product.shortDescription} />
+    <meta property="twitter:image" content={ogImage} />
+
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   </head>
 

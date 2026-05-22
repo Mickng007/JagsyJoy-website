@@ -1,17 +1,32 @@
----
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import AnnouncementBar from '../components/AnnouncementBar.astro';
-
-const pageTitle = "Blogs | Jagsy Joy";
+const siteUrl = "https://jagsyjoy-website.pages.dev";
+const canonicalUrl = `${siteUrl}/blogs`;
+const ogImage = `${siteUrl}/images/blog-1.jpg`;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-    <meta name="description" content="Explore the Jagsy Joy blog for toddler learning tips, screen-free play ideas, and practical life skills." />
+    <title>Jagsy Joy Blog | Toddler Learning & Screen-Free Play Ideas</title>
+    <meta
+      name="description"
+      content="Read Jagsy Joy blog articles about toddler development, busy boards, fine motor skills, screen-free play, and practical life learning."
+    />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content="Jagsy Joy Blog | Toddler Learning & Screen-Free Play Ideas" />
+    <meta property="og:description" content="Read Jagsy Joy blog articles about toddler development, busy boards, fine motor skills, screen-free play, and practical life learning." />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content="Jagsy Joy Blog | Toddler Learning & Screen-Free Play Ideas" />
+    <meta property="twitter:description" content="Read Jagsy Joy blog articles about toddler development, busy boards, fine motor skills, screen-free play, and practical life learning." />
+    <meta property="twitter:image" content={ogImage} />
   </head>
 
   <body>
@@ -20,7 +35,7 @@ const pageTitle = "Blogs | Jagsy Joy";
 
     <main>
       <header class="blogs-hero">
-        <p class="eyebrow">JAGSY JOY BLOG</p>
+        <p class="eyebrow">Jagsy Joy Blog</p>
         <h1>Playful insights for parents.</h1>
         <p class="hero-text">
           Explore tips for screen-free play, early learning, and building practical life skills with your toddler.
@@ -29,20 +44,22 @@ const pageTitle = "Blogs | Jagsy Joy";
 
       <div class="container">
         <div class="blogs-grid">
-          <article class="blog-preview-card">
-            <div class="card-image-wrap">
-              <img src="/images/blog-1.jpg" alt="Toddler playing with a busy board for screen-free learning" />
-              <div class="card-badge">New Article</div>
-            </div>
-            <div class="card-content">
-              <p class="card-meta">Toddler Learning • Screen-Free Play</p>
-              <h2>Busy Boards: A Screen-Free Way to Help Toddlers Build Real-Life Skills</h2>
-              <p class="card-excerpt">
-                Discover how busy boards help toddlers build practical life skills, develop fine motor control, and enjoy meaningful screen-free play.
-              </p>
-              <a href="/blogs/busy-boards-screen-free-life-skills" class="read-more">Read Article</a>
-            </div>
-          </article>
+          {blogPosts.map((post) => (
+            <article class="blog-preview-card">
+              <div class="card-image-wrap">
+                <img src={post.image} alt={post.title} />
+                <div class="card-badge">{post.badge}</div>
+              </div>
+              <div class="card-content">
+                <p class="card-meta">{post.meta}</p>
+                <h2>{post.title}</h2>
+                <p class="card-excerpt">
+                  {post.excerpt}
+                </p>
+                <a href={post.link} class="read-more">Read Article</a>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </main>
@@ -53,18 +70,20 @@ const pageTitle = "Blogs | Jagsy Joy";
 
 <style>
   :root {
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-    color: #17204A;
-    background: #EAFBFF;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    color: #17204a;
+    background: #eafbff;
   }
 
   body {
     margin: 0;
-    background: 
+    min-height: 100vh;
+    background:
       radial-gradient(circle at 10% 10%, rgba(0, 200, 255, 0.08), transparent 30%),
       radial-gradient(circle at 90% 4%, rgba(24, 214, 201, 0.08), transparent 26%),
-      linear-gradient(180deg, #EAFBFF 0%, #F4FDFF 50%, #EEE8FF 100%);
-    min-height: 100vh;
+      linear-gradient(180deg, #eafbff 0%, #f4fdff 50%, #eee8ff 100%);
   }
 
   .blogs-hero {
@@ -78,7 +97,7 @@ const pageTitle = "Blogs | Jagsy Joy";
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: #17204A;
+    color: #17204a;
     font-weight: 900;
     margin-bottom: 20px;
   }
@@ -88,13 +107,13 @@ const pageTitle = "Blogs | Jagsy Joy";
     line-height: 0.98;
     letter-spacing: -0.055em;
     margin: 0 0 24px;
-    color: #17204A;
+    color: #17204a;
     font-weight: 900;
   }
 
   .hero-text {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.65;
     color: #5f526b;
     max-width: 760px;
     margin: 0 auto;
@@ -104,21 +123,24 @@ const pageTitle = "Blogs | Jagsy Joy";
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 8% 120px;
+    box-sizing: border-box;
   }
 
   .blogs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 48px;
   }
 
   .blog-preview-card {
-    background: white;
-    border: 1px solid #D1EFFF;
+    background: #ffffff;
+    border: 1px solid #d1efff;
     border-radius: 36px;
     overflow: hidden;
     box-shadow: 0 20px 50px rgba(0, 200, 255, 0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
   }
@@ -129,9 +151,10 @@ const pageTitle = "Blogs | Jagsy Joy";
   }
 
   .card-image-wrap {
-    height: 280px;
+    height: 260px;
     position: relative;
     overflow: hidden;
+    background: #f4fdff;
   }
 
   .card-image-wrap img {
@@ -149,8 +172,8 @@ const pageTitle = "Blogs | Jagsy Joy";
     position: absolute;
     top: 24px;
     left: 24px;
-    background: #17204A;
-    color: white;
+    background: #17204a;
+    color: #ffffff;
     padding: 6px 14px;
     border-radius: 99px;
     font-size: 11px;
@@ -169,17 +192,17 @@ const pageTitle = "Blogs | Jagsy Joy";
   .card-meta {
     font-size: 12px;
     font-weight: 800;
-    color: #18D6C9;
+    color: #18d6c9;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 16px;
   }
 
   .card-content h2 {
-    font-size: 26px;
+    font-size: 24px;
     line-height: 1.25;
-    margin-bottom: 20px;
-    color: #17204A;
+    margin: 0 0 20px;
+    color: #17204a;
     font-weight: 900;
     letter-spacing: -0.02em;
   }
@@ -195,7 +218,7 @@ const pageTitle = "Blogs | Jagsy Joy";
   .read-more {
     display: inline-flex;
     align-items: center;
-    color: #00C8FF;
+    color: #00c8ff;
     text-decoration: none;
     font-weight: 900;
     font-size: 15px;
@@ -214,16 +237,25 @@ const pageTitle = "Blogs | Jagsy Joy";
 
   @media (max-width: 900px) {
     .blogs-hero {
-      padding-top: 150px;
+      padding: 150px 6% 60px;
     }
 
     .blogs-grid {
       grid-template-columns: 1fr;
+      gap: 32px;
     }
 
     .blog-preview-card {
       max-width: 500px;
       margin: 0 auto;
+    }
+
+    .card-content {
+      padding: 32px 24px;
+    }
+
+    .card-content h2 {
+      font-size: 22px;
     }
   }
 </style>

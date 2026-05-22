@@ -3,11 +3,15 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import AnnouncementBar from '../components/AnnouncementBar.astro';
 
+const siteUrl = "https://jagsyjoy-website.pages.dev";
+const canonicalUrl = `${siteUrl}/cart`;
+const ogImage = `${siteUrl}/images/blog-1.jpg`;
+
 const cartSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Your Cart | Jagsy Joy",
-  url: "http://localhost:4321/cart",
+  name: "Cart | Jagsy Joy",
+  url: canonicalUrl,
   description: "Review your selected Jagsy Joy toddler toys before checkout.",
 };
 ---
@@ -17,7 +21,23 @@ const cartSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Cart | Jagsy Joy</title>
-    <meta name="description" content="Review your Jagsy Joy toys before playtime begins." />
+    <meta name="description" content="Review your selected Jagsy Joy toddler toys before checkout." />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content="Cart | Jagsy Joy" />
+    <meta property="og:description" content="Review your selected Jagsy Joy toddler toys before checkout." />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content="Cart | Jagsy Joy" />
+    <meta property="twitter:description" content="Review your selected Jagsy Joy toddler toys before checkout." />
+    <meta property="twitter:image" content={ogImage} />
+
     <script type="application/ld+json" set:html={JSON.stringify(cartSchema)} />
   </head>
 

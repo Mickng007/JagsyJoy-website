@@ -1,17 +1,42 @@
----
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+const siteUrl = "https://jagsyjoy-website.pages.dev";
+const canonicalUrl = `${siteUrl}/contact`;
+const ogImage = `${siteUrl}/images/blog-1.jpg`;
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Jagsy Joy",
+  url: canonicalUrl,
+  description: "Contact Jagsy Joy for questions about busy boards, toddler learning toys, orders, product support, and general inquiries.",
+};
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Contact | Jagsy Joy</title>
+    <title>Contact Jagsy Joy | Toddler Learning Toys</title>
     <meta
       name="description"
-      content="Contact Jagsy Joy to learn more about our toddler learning toys, busy boards, busy books, and travel-friendly activity toys."
+      content="Contact Jagsy Joy for questions about busy boards, toddler learning toys, orders, product support, and general inquiries."
     />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content="Contact Jagsy Joy | Toddler Learning Toys" />
+    <meta property="og:description" content="Contact Jagsy Joy for questions about busy boards, toddler learning toys, orders, product support, and general inquiries." />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content="Contact Jagsy Joy | Toddler Learning Toys" />
+    <meta property="twitter:description" content="Contact Jagsy Joy for questions about busy boards, toddler learning toys, orders, product support, and general inquiries." />
+    <meta property="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
   </head>
 
   <body>

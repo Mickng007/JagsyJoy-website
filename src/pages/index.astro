@@ -5,23 +5,27 @@ import ProductCard from '../components/ProductCard.astro';
 import AnnouncementBar from '../components/AnnouncementBar.astro';
 import products from '../data/products.json';
 
+const siteUrl = "https://jagsyjoy-website.pages.dev";
+const ogImage = `${siteUrl}/images/blog-1.jpg`;
+
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Jagsy Joy",
-  url: "http://localhost:4321",
+  url: siteUrl,
+  logo: `${siteUrl}/images/jagsy-joy-logo.png`,
   email: "qenterprises.design@gmail.com",
   description:
-    "Jagsy Joy creates thoughtful learning toys for toddlers, including busy boards and screen-free learning toys.",
+    "Jagsy Joy creates screen-free busy boards and toddler learning toys for practical life skills, fine motor development, and hands-on discovery.",
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Jagsy Joy",
-  url: "http://localhost:4321",
+  url: siteUrl,
   description:
-    "Jagsy Joy creates thoughtful learning toys for toddlers, including busy boards and screen-free learning toys.",
+    "Jagsy Joy creates screen-free busy boards and toddler learning toys for practical life skills, fine motor development, and hands-on discovery.",
 };
 ---
 
@@ -29,11 +33,27 @@ const websiteSchema = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Jagsy Joy | Playful Learning Toys for Toddlers</title>
+    <title>Jagsy Joy | Screen-Free Busy Boards for Toddlers</title>
     <meta
       name="description"
-      content="Jagsy Joy creates playful toddler busy boards designed to support fine motor skills, independent play, and screen-free discovery."
+      content="Discover Jagsy Joy busy boards designed for screen-free play, fine motor skills, practical life learning, and toddler-friendly discovery."
     />
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content="Jagsy Joy | Screen-Free Busy Boards for Toddlers" />
+    <meta property="og:description" content="Discover Jagsy Joy busy boards designed for screen-free play, fine motor skills, practical life learning, and toddler-friendly discovery." />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content="Jagsy Joy | Screen-Free Busy Boards for Toddlers" />
+    <meta property="twitter:description" content="Discover Jagsy Joy busy boards designed for screen-free play, fine motor skills, practical life learning, and toddler-friendly discovery." />
+    <meta property="twitter:image" content={ogImage} />
+
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   </head>

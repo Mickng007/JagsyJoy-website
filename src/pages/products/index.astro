@@ -1,19 +1,32 @@
----
-import products from '../../data/products.json';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import ProductCard from '../../components/ProductCard.astro';
+const siteUrl = "https://jagsyjoy-website.pages.dev";
+const canonicalUrl = `${siteUrl}/products`;
+const ogImage = `${siteUrl}/images/blog-1.jpg`;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Products | Jagsy Joy</title>
+    <title>Toddler Busy Boards | Jagsy Joy</title>
     <meta
       name="description"
-      content="Explore Jagsy Joy toddler learning toys, including busy boards and screen-free learning toys."
+      content="Explore Jagsy Joy toddler busy boards made for hands-on learning, travel-friendly play, fine motor skills, and everyday discovery."
     />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content="Toddler Busy Boards | Jagsy Joy" />
+    <meta property="og:description" content="Explore Jagsy Joy toddler busy boards made for hands-on learning, travel-friendly play, fine motor skills, and everyday discovery." />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content="Toddler Busy Boards | Jagsy Joy" />
+    <meta property="twitter:description" content="Explore Jagsy Joy toddler busy boards made for hands-on learning, travel-friendly play, fine motor skills, and everyday discovery." />
+    <meta property="twitter:image" content={ogImage} />
   </head>
 
   <body>

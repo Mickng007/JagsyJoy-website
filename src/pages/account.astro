@@ -3,12 +3,16 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import AnnouncementBar from '../components/AnnouncementBar.astro';
 
+const siteUrl = "https://jagsyjoy-website.pages.dev";
+const canonicalUrl = `${siteUrl}/account`;
+const ogImage = `${siteUrl}/images/blog-1.jpg`;
+
 const accountSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "My Account | Jagsy Joy",
-  url: "http://localhost:4321/account",
-  description: "Manage your Jagsy Joy account, view orders, and save your favorite toddler learning toys.",
+  url: canonicalUrl,
+  description: "Sign in or create a Jagsy Joy account to manage details, saved favorites, and order information.",
 };
 ---
 
@@ -17,7 +21,23 @@ const accountSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>My Account | Jagsy Joy</title>
-    <meta name="description" content="Sign in or create a Jagsy Joy account to manage your orders and favorites." />
+    <meta name="description" content="Sign in or create a Jagsy Joy account to manage details, saved favorites, and order information." />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content="My Account | Jagsy Joy" />
+    <meta property="og:description" content="Sign in or create a Jagsy Joy account to manage details, saved favorites, and order information." />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content="My Account | Jagsy Joy" />
+    <meta property="twitter:description" content="Sign in or create a Jagsy Joy account to manage details, saved favorites, and order information." />
+    <meta property="twitter:image" content={ogImage} />
+
     <script type="application/ld+json" set:html={JSON.stringify(accountSchema)} />
     <style>
       [data-auth-state] {

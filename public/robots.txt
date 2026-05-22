@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jagsyjoy-website.pages.dev/sitemap.xml
